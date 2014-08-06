@@ -1,0 +1,20 @@
+.navbar {
+    background-color: $color-navbar-bg;
+    color: $color-text-inverse;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.navbar a {
+    color: $color-navbar-link;
+}
+
+.navbar a:hover {
+    color: $color-navbar-link-active;
+}
+
+.navbar-branding {
+    font-size: 30px;
+    margin-left: 10px;
+    line-height: 30px;
+}

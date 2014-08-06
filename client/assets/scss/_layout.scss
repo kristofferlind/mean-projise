@@ -1,0 +1,48 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper {
+    padding-top: 50px;
+    display: flex;
+    min-height: calc(100% - 50px);
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.navbar {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+}
+
+.main {
+    background-color: $white;
+    flex: 1;
+    height: 100%;
+}
+
+.full-height {
+    min-height: 100%;
+    display: flex;
+}
+
+.grid {
+    @include container(100%);
+}
+
+.grid-1-3 {
+    @include span(4 of 12);
+    min-width: 300px;
+    box-sizing: border-box;
+}
+
+.grid-2-3 {
+    @include span(8 of 12);
+}
+
+.grid-3-3 {
+    @include span(full);
+}
