@@ -1,7 +1,7 @@
 angular.module('projiSeApp').factory('Project', function($http, socket, User) {
     'use strict';
 
-    var _user = User.get(),
+    var _user = User.current,
         Project = {
             all: function() {
                 var _projects = [];

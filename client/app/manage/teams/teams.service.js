@@ -146,13 +146,14 @@ angular.module('projiSeApp').factory('Team', function($http, User, TeamProvider,
                     $http.put('/api/teams/' + _user.activeTeam + '/users', user);
                 },
                 all: function() {
-                    console.log('active: ' + Team.active());
-                    console.log(Team.find(Team.active()));
-                    // var _team = {};
-                    // _team.users = [''];
-                    // _team = Team.find(Team.active());
+                    var teamId = Team.active(),
+                        team = Team.find(teamId);
 
-                    // return _team;
+                    console.log(Team.all());
+                    console.log(team);
+                    console.log(team.users);
+
+                    return team.users;
                 }
             }
         };

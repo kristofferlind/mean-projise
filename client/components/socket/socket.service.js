@@ -34,6 +34,8 @@ angular.module('projiSeApp')
                  * Syncs item creation/updates on 'model:save'
                  */
                 socket.on(modelName + ':save', function(item) {
+                    console.log(item);
+                    console.log(modelName);
                     var oldItem = _.find(array, {
                         _id: item._id
                     });

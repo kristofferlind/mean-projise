@@ -18,12 +18,21 @@ var handleError = function(res, err) {
 
 // Get list of teams
 exports.index = function(req, res) {
-    User.findById(req.user._id).populate('teams').exec(function(err, user) {
+    User.findById(req.user._id).select('teams').populate('teams').exec(function(err, user) {
         if (err) {
             return handleError(res, err);
         }
-        return res.json(200, user.teams);
-    })
+
+        User.populate(user.teams, {
+            path: 'users',
+            select: '-salt -hashedPassword'
+        }, function(err, teams) {
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.json(200, teams);
+        })
+    });
 };
 
 // Get a single team
@@ -177,3 +186,7 @@ exports.addUser = function(req, res) {
         });
     });
 };
+
+exports.removeUser = function(req, res) {
+    console.log('remove called');
+}
