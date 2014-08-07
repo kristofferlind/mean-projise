@@ -7,6 +7,8 @@
 var user = require('./user.model');
 
 var sanitize = function(doc) {
+    delete doc.hashedPassword;
+    delete doc.salt;
     return doc;
 }
 

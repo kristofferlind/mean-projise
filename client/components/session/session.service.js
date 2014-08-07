@@ -1,16 +1,19 @@
-angular.module('projiSeApp').factory('Session', function($http, socket, User) {
+angular.module('projiSeApp').factory('Session', function($http, socket) {
     'use strict';
 
-    // var _user = {};
-
-    // User.promise().success(function(user) {
-    //     Session.user = user;
-    // });
-
-    var Session = {
-        promise: User.get,
-        user: User.current
-    };
+    var promise = $http.get('/api/users/me').success(function(user) {
+            angular.copy(user, _user);
+            socket.syncUpdates('user', _user);
+        }),
+        _user = {
+            name: {}
+        },
+        Session = {
+            promise: promise,
+            user: function() {
+                return _user;
+            },
+        };
 
     return Session;
 });

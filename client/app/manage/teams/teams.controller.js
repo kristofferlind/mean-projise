@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('projiSeApp')
-    .controller('TeamsController', function($scope, Team) {
+    .controller('TeamsController', function($scope, Team, Session) {
 
         $scope.showEditTeam = false;
 
@@ -10,12 +10,18 @@ angular.module('projiSeApp')
             newTeam: '',
             editTeam: '',
             newUser: '',
-            activeTeam: Team.active(),
             users: Team.Users.all(),
+            user: Session.user(),
+            // team: Team.find($scope.model.user.activeTeam)
         };
+
+        $scope.$watch('model.user.activeTeam', function() {
+            $scope.model.users = Team.Users.all();
+        });
 
         $scope.activateTeam = function(team) {
             Team.activate(team);
+            $scope.model.team = Team.find($scope.model.user.activeTeam);
         };
 
         $scope.createTeam = function() {
@@ -24,7 +30,7 @@ angular.module('projiSeApp')
         };
 
         $scope.editTeam = function(team) {
-            $scope.model.editTeam = Team.find(team._id);
+            $scope.model.editTeam = team;
             $scope.showEditTeam = true;
         };
 

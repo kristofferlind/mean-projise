@@ -23,15 +23,16 @@ exports.index = function(req, res) {
             return handleError(res, err);
         }
 
-        User.populate(user.teams, {
-            path: 'users',
-            select: '-salt -hashedPassword'
-        }, function(err, teams) {
-            if (err) {
-                return handleError(res, err);
-            }
-            return res.json(200, teams);
-        })
+        // User.populate(user.teams, {
+        //     path: 'users',
+        //     select: '-salt -hashedPassword'
+        // }, function(err, teams) {
+        //     if (err) {
+        //         return handleError(res, err);
+        //     }
+        //     return res.json(200, teams);
+        // })
+        return res.json(200, user.teams);
     });
 };
 
@@ -44,7 +45,16 @@ exports.show = function(req, res) {
         if (!team) {
             return res.send(404);
         }
-        return res.json(team);
+        User.populate(team, {
+            path: 'users',
+            select: '-salt -hashedPassword'
+        }, function(err, team) {
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.json(200, team);
+        })
+        // return res.json(team);
     });
 };
 
@@ -83,7 +93,11 @@ exports.update = function(req, res) {
         if (!team) {
             return res.send(404);
         }
+
+        delete req.body.users;
+
         var updated = _.merge(team, req.body);
+
         updated.save(function(err) {
             if (err) {
                 return handleError(res, err);

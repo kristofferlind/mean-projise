@@ -77,86 +77,89 @@
 
 
 
-angular.module('projiSeApp').factory('Team', function($http, User, TeamProvider, Session) {
+angular.module('projiSeApp').factory('Team', function($http, TeamProvider, Session) {
     'use strict';
 
     var _teams = TeamProvider.teams,
-        _user = Session.user,
-        // _active = _user.activeTeam || '';
+        _user = Session.user(),
+        _users = [];
 
-        // $http.get('/api/teams').success(function(teams) {
-        //     _teams.length = 0;
-        //     angular.copy(teams, _teams);
-        //     socket.syncUpdates('team', _teams);
-        // });
+    var Team = {
+        active: function() {
+            return _user.activeTeam || '';
+        },
+        activate: function(team) {
+            $http.put('/api/teams/' + team._id + '/active', team);
+        },
+        all: function() {
+            return _teams;
+        },
+        create: function(team) {
+            if (team === '') {
+                return;
+            }
 
-        // $http.get('/api/teams/@_id/active').success(function(active) {
-        //     angular.copy(active, _active);
-        //     console.log(active);
-        //     console.log(_user);
-        // });
+            $http.post('/api/teams', {
+                name: team.name,
+                description: team.description,
+                users: [_user._id]
+            });
+        },
+        delete: function(team) {
+            $http.delete('/api/teams/' + team._id);
+        },
+        find: function(teamId) {
+            var _team = {};
 
-        Team = {
-            active: function() {
-                return _user.activeTeam;
-            },
-            activate: function(team) {
-                $http.put('/api/teams/' + team._id + '/active', team);
-                _user.activeTeam = team._id;
+            _team = _.find(_teams, {
+                _id: teamId
+            });
+
+            return _team;
+            // var _team = {};
+            // $http.get('/api/teams/' + teamId).success(function(team) {
+            //     angular.copy(team, _team);
+            // });
+
+            // return _team;
+
+            // return $http.get('/api/teams/' + teamId);
+        },
+        update: function(team) {
+            $http.put('/api/teams/' + team._id, team);
+        },
+        Users: {
+            add: function(user) {
+                return $http.put('/api/teams/' + _user.activeTeam + '/users', user);
             },
             all: function() {
-                return _teams;
-            },
-            create: function(team) {
-                if (team === '') {
-                    return;
-                }
+                // var teamId = Team.active(),
+                //     team = Team.find(teamId);
 
-                $http.post('/api/teams', {
-                    name: team.name,
-                    description: team.description,
-                    users: [_user._id]
-                });
-            },
-            delete: function(team) {
-                $http.delete('/api/teams/' + team._id);
-            },
-            find: function(teamId) {
-                var _team = {};
+                // return team.users;
 
-                _team = _.find(_teams, {
-                    _id: teamId
-                });
-
-                return _team;
 
                 // var _team = {};
-                // $http.get('/api/teams/' + teamId).success(function(team) {
+
+                // var users = _team && _team.users;
+
+                // Team.find(Team.active()).success(function(team) {
                 //     angular.copy(team, _team);
-                //     socket.syncUpdates('team', _team);
+                //     console.log(team.users);
                 // });
 
-                // return _team;
-            },
-            update: function(team) {
-                $http.put('/api/teams/' + team._id, team);
-            },
-            Users: {
-                add: function(user) {
-                    $http.put('/api/teams/' + _user.activeTeam + '/users', user);
-                },
-                all: function() {
-                    var teamId = Team.active(),
-                        team = Team.find(teamId);
+                // return users;
 
-                    console.log(Team.all());
-                    console.log(team);
-                    console.log(team.users);
+                var _users = {};
 
-                    return team.users;
-                }
+                $http.get('/api/teams/' + _user.activeTeam + '/users').success(function(users) {
+                    angular.copy(users, _users);
+                });
+
+                return _users;
             }
-        };
+        }
+    };
 
     return Team;
 });

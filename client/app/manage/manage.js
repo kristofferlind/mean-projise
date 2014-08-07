@@ -21,11 +21,11 @@ angular.module('projiSeApp')
                 url: '/teams',
                 authenticate: true,
                 resolve: {
-                    TeamProvider: function(TeamProvider) {
+                    resolvedTeamProvider: function(TeamProvider) {
                         return TeamProvider.promise;
                     },
-                    Session: function(Session) {
-                        return Session;
+                    resolvedSession: function(Session) {
+                        return Session.promise;
                     }
                 },
                 views: {

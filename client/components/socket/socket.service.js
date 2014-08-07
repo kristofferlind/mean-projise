@@ -34,24 +34,33 @@ angular.module('projiSeApp')
                  * Syncs item creation/updates on 'model:save'
                  */
                 socket.on(modelName + ':save', function(item) {
-                    console.log(item);
-                    console.log(modelName);
-                    var oldItem = _.find(array, {
-                        _id: item._id
-                    });
-                    var index = array.indexOf(oldItem);
-                    var event = 'created';
+                    var oldItem;
+                    if (!_.isArray(item) && !_.isArray(array)) {
+                        var itemId = '"' + item._id + '"';
+                        oldItem = _.find(array, {
+                            _id: itemId
+                        });
 
-                    // replace oldItem if it exists
-                    // otherwise just add item to the collection
-                    if (oldItem) {
-                        array.splice(index, 1, item);
-                        event = 'updated';
+                        angular.copy(item, array);
+                        cb('updated', item, array);
                     } else {
-                        array.push(item);
-                    }
+                        oldItem = _.find(array, {
+                            _id: item._id
+                        });
+                        var index = array.indexOf(oldItem);
+                        var event = 'created';
 
-                    cb(event, item, array);
+                        // replace oldItem if it exists
+                        // otherwise just add item to the collection
+                        if (oldItem) {
+                            array.splice(index, 1, item);
+                            event = 'updated';
+                        } else {
+                            array.push(item);
+                        }
+
+                        cb(event, item, array);
+                    }
                 });
 
                 /**
