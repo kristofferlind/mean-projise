@@ -13,7 +13,7 @@ angular.module('projiSeApp')
         restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
         controller: function($scope, $element, $attrs, $rootScope) {
             var s4 = function() {
-                return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+                return (((1 + Math.random()) * 0x10000) || 0).toString(16).substring(1);
             };
 
             var message = $attrs.confirmMessage || 'Are you sure?',

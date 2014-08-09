@@ -1,3 +1,6 @@
+Implementation ideas
+---
+
 1
 --
 project
@@ -131,7 +134,7 @@ role
 team
     name
     description
-    users = [user._id]
+    users = [user._id] //name, email?
 
 -----
 

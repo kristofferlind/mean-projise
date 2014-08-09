@@ -27,6 +27,7 @@ exports.register = function(socket) {
         onSave(socket, sanitized);
     });
     user.schema.post('remove', function(doc) {
-        onRemove(socket, doc);
+        var sanitized = sanitize(doc);
+        onRemove(socket, sanitized);
     });
 }

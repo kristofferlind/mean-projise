@@ -23,16 +23,16 @@ exports.index = function(req, res) {
             return handleError(res, err);
         }
 
-        // User.populate(user.teams, {
-        //     path: 'users',
-        //     select: '-salt -hashedPassword'
-        // }, function(err, teams) {
-        //     if (err) {
-        //         return handleError(res, err);
-        //     }
-        //     return res.json(200, teams);
-        // })
-        return res.json(200, user.teams);
+        User.populate(user.teams, {
+            path: 'users',
+            select: '-salt -hashedPassword'
+        }, function(err, teams) {
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.json(200, teams);
+        })
+        // return res.json(200, user.teams);
     });
 };
 
@@ -181,13 +181,13 @@ exports.addUser = function(req, res) {
                     return handleError(res, err);
                 }
 
-                team.users.push(newUser._id);
+                team.users.addToSet(newUser._id);
                 team.save(function(err, _team) {
                     if (err) {
                         console.log(err);
                     }
 
-                    newUser.teams.push(_team._id);
+                    newUser.teams.addToSet(_team._id);
                     newUser.save(function(err, user) {
                         if (err) {
                             console.log(err);
@@ -202,5 +202,31 @@ exports.addUser = function(req, res) {
 };
 
 exports.removeUser = function(req, res) {
-    console.log('remove called');
+    User.findById(req.user._id, function(err, user) {
+        if (err) {
+            return handleError(res, err);
+        }
+        Team.findById(user.activeTeam, function(err, team) {
+            if (err) {
+                return handleError(res, err);
+            }
+
+            team.users.pull(req.params.id);
+            team.save(function(err, _team) {
+                if (err) {
+                    console.log(err);
+                }
+
+                User.findById(req.params.id, function(err, removeUser) {
+                    removeUser.teams.pull(_team._id);
+                    removeUser.save(function(err, removedUser) {
+                        if (err) {
+                            console.log(err);
+                        }
+                        return res.send(204);
+                    })
+                })
+            });
+        });
+    });
 }

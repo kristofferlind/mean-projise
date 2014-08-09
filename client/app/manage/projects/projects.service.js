@@ -1,28 +1,42 @@
-angular.module('projiSeApp').factory('Project', function($http, socket, User) {
+angular.module('projiSeApp').factory('Project', function($http, $modal, $timeout, $rootScope, ProjectProvider, Session) {
     'use strict';
 
-    var _user = User.current,
+    var _user = Session.user(),
+        _projects = ProjectProvider.projects,
+        _activeProject,
+        _activeProjectId,
+        _users = {},
         Project = {
+            activeProject: function() {
+                return _activeProject || Project.find(_user.activeProject);
+            },
+            activeProjectId: function() {
+                if (!_activeProjectId) {
+                    return _user.activeProject;
+                }
+                return _activeProjectId;
+            },
+            activate: function(project) {
+                _activeProjectId = project._id;
+                _activeProject = project;
+                $http.put('/api/projects/' + project._id + '/active');
+            },
+
             all: function() {
-                var _projects = [];
-
-                $http.get('/api/projects').success(function(projects) {
-                    _projects.length = 0;
-                    angular.copy(projects, _projects);
-                    socket.syncUpdates('project', _projects);
-                });
-
                 return _projects;
             },
-            create: function(project) {
-                if (project === '') {
-                    return;
-                }
+            create: function() {
+                var createModal = $modal.open({
+                    templateUrl: 'app/manage/projects/create/create.html',
+                    controller: 'projectCreateController'
+                });
 
-                $http.post('/api/projects', {
-                    name: project.name,
-                    description: project.description,
-                    users: [_user._id]
+                createModal.result.then(function(project) {
+                    $http.post('/api/projects', {
+                        name: project.name,
+                        description: project.description,
+                        users: [_user._id]
+                    });
                 });
             },
             delete: function(project) {
@@ -30,16 +44,81 @@ angular.module('projiSeApp').factory('Project', function($http, socket, User) {
             },
             find: function(projectId) {
                 var _project = {};
-                $http.get('/api/projects/' + projectId).success(function(project) {
-                    angular.copy(project, _project);
+
+                _project = _.find(_projects, {
+                    _id: projectId
                 });
 
                 return _project;
             },
             update: function(project) {
-                $http.put('/api/projects/' + project._id, project);
+                var editModal = $modal.open({
+                    templateUrl: 'app/manage/projects/edit/edit.html',
+                    controller: 'projectEditController',
+                    resolve: {
+                        project: function() {
+                            return project;
+                        }
+                    }
+                });
+
+                editModal.result.then(function(project) {
+                    $http.put('/api/projects/' + project._id, project);
+                });
+
+            },
+            Users: {
+                add: function() {
+                    var addUserModal = $modal.open({
+                        templateUrl: 'app/manage/projects/users/add/add.html',
+                        controller: 'projectAddUserController'
+                    });
+
+                    addUserModal.result.then(function(user) {
+                        $http.put('/api/projects/' + Project.activeProjectId() + '/users/', user);
+                    });
+                },
+                all: function() {
+                    return _users;
+                },
+                setAll: function() {
+                    var projectId = Project.activeProjectId(),
+                        project = Project.find(projectId);
+                    if (project) {
+                        _users = angular.copy(project.users);
+                    }
+
+                    // $timeout(function() {
+                    //     var projectId = Project.activeProjectId(),
+                    //         project = Project.find(projectId);
+                    //     if (project) {
+                    //         _users = angular.copy(project.users);
+                    //     }
+                    // }, 150);
+
+
+                },
+                remove: function(user) {
+                    $http.delete('/api/projects/' + Project.activeProjectId() + '/users/' + user._id);
+                }
+            },
+            Teams: {
+                add: function(team) {
+                    $http.put('/api/projects/' + Project.activeProjectId() + '/users/' + team._id);
+                }
             }
         };
+
+    $rootScope.$watch(function() {
+        var project = Project.find(Project.activeProjectId());
+        return project.users;
+    }, function() {
+        var projectId = Project.activeProjectId(),
+            project = Project.find(projectId);
+        if (project.users) {
+            _users = angular.copy(project.users);
+        }
+    }, true);
 
     return Project;
 });

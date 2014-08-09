@@ -10,6 +10,11 @@ angular.module('projiSeApp')
             .state('dashboard.manage.projects', {
                 url: '/',
                 authenticate: true,
+                resolve: {
+                    resolvedProjectProvider: function(ProjectProvider) {
+                        return ProjectProvider.promise;
+                    }
+                },
                 views: {
                     'main@': {
                         templateUrl: 'app/manage/projects/projects.html',
@@ -23,9 +28,6 @@ angular.module('projiSeApp')
                 resolve: {
                     resolvedTeamProvider: function(TeamProvider) {
                         return TeamProvider.promise;
-                    },
-                    resolvedSession: function(Session) {
-                        return Session.promise;
                     }
                 },
                 views: {

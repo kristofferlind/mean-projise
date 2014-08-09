@@ -15,6 +15,11 @@ angular.module('projiSeApp', [
         $stateProvider.state('dashboard', {
             url: '',
             abstract: true,
+            resolve: {
+                resolvedSession: function(Session) {
+                    return Session.promise;
+                }
+            },
             views: {
                 'header': {
                     templateUrl: 'components/navbar/navbar.html',

@@ -4,51 +4,41 @@
     </div>
     <section class="grid-1-3">
         <h2>My projects</h2>
-<!--         <ul class="list-toolbar">
-            <li><a ng-click="showAddProject=true"><i class="fa fa-plus"></i> Add</a></li>
-        </ul> -->
+        <ul class="list-toolbar">
+            <li><a class="button button-primary button-small" ng-click="Project.create()"><i class="fa fa-plus"></i></a></li>
+        </ul>
         <table class="table table-horizontal">
-            <tr ng-repeat="(projectId, project) in model.projects">
+            <tr ng-repeat="(projectId, project) in Project.all()">
                 <td><b>{{project.name}}: </b>{{project.description}}</td>
-                <td class="button-group-inline"><button class="button button-success button-small" ng-click="setCurrentProject(project.$id)"><i class="fa fa-check"></i></button>
-                <button class="button button-secondary button-small" ng-click="editProject(project)"><i class="fa fa-cog"></i></button>
-                <button class="button button-small button-error" confirm-dialog confirm-id="projectId" confirm-message="Are you sure you want to delete this project and all it's data?" on-confirm="deleteProject(project)"><i class="fa fa-trash-o"></i></button></td>
+                <td class="button-group-inline"><button ng-disabled="project._id === Project.activeProjectId()" class="button button-success button-small" ng-click="Project.activate(project)"><i class="fa fa-check"></i></button>
+                <button class="button button-secondary button-small" ng-click="Project.update(project)"><i class="fa fa-cog"></i></button>
+                <button class="button button-small button-error" confirm-dialog confirm-id="projectId" confirm-message="Are you sure you want to delete this project and all it's data?" on-confirm="Project.delete(project)"><i class="fa fa-trash-o"></i></button></td>
             </tr>
         </table>
 
 
     </section>
     <section class="grid-1-3">
-        <div ng-show="!showEditProject">
-        <h2>Create project</h2>
-            <form role="form" name="project_create" ng-submit="createProject()">
-                <fieldset>
-                    <label for="project_name">Name</label>
-                    <input id="project_name" type="text" placeholder="Name" ng-model="newProject.name" maxlength="50" ng-maxlength="50" required>
-
-                    <label for="project_description">Description</label>
-                    <textarea id="project_description" type="text" placeholder="Name" ng-model="newProject.description" maxlength="250" ng-maxlength="250" required></textarea>
-                </fieldset>
-                <button class="button button-primary" ng-disabled="project_create.$invalid" type="submit">Add</button>
-            </form>
-        </div>
-        <div ng-show="showEditProject">
-        <h2>Edit project</h2>
-            <form role="form" name="project_edit" ng-submit="updateProject()">
-                <fieldset>
-                    <label for="project_name">Name</label>
-                    <input id="project_name" type="text" placeholder="Name" ng-model="editProject.name" maxlength="50" ng-maxlength="50" required>
-
-                    <label for="project_description">Description</label>
-                    <textarea id="project_description" type="text" placeholder="Name" ng-model="editProject.description" maxlength="250" ng-maxlength="250" required></textarea>
-                </fieldset>
-                <button class="button button-primary" ng-disabled="project_edit.$invalid" type="submit">Update</button>
-            </form>
-        </div>
+        <h2>Project users</h2>
+        <ul class="list-toolbar">
+            <li><a class="button button-primary button-small" ng-click="Project.Users.add()"><i class="fa fa-plus"></i></a></li>
+        </ul>
+        <table class="table table-horizontal">
+            <tr ng-repeat="user in Project.Users.all()">
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td class="button-group-inline"><button class="button button-small button-error" confirm-dialog confirm-id="teamId" confirm-message="Are you sure you want to remove this member?" on-confirm="Project.Users.remove(user)"><i class="fa fa-trash-o"></i></button></td>
+            </tr>
+        </table>
     </section>
     <section class="grid-1-3">
-        <h2>Help</h2>
-        Make the description short and to the point.<br />
-        {{model.user}}
+        <h2>My teams</h2>
+        <table class="table table-horizontal">
+            <tr ng-repeat="team in Team.all()">
+                <td><b>{{team.name}}: </b>{{team.description}}</td>
+                <td class="button-group-inline">
+                <button class="button button-small button-success" ng-click="Project.Teams.add(team)"><i class="fa fa-users"></i></button></td>
+            </tr>
+        </table>
     </section>
 </div>

@@ -17,5 +17,6 @@ router.get('/:id/active', auth.isAuthenticated(), controller.active);
 router.put('/:id/active', auth.isAuthenticated(), controller.activate);
 router.get('/:id/users', auth.isAuthenticated(), controller.users);
 router.put('/:id/users', auth.isAuthenticated(), controller.addUser);
+router.delete('/:id/users', auth.isAuthenticated(), controller.removeUser);
 
 module.exports = router;

@@ -35,14 +35,20 @@ angular.module('projiSeApp')
                  */
                 socket.on(modelName + ':save', function(item) {
                     var oldItem;
-                    if (!_.isArray(item) && !_.isArray(array)) {
-                        var itemId = '"' + item._id + '"';
-                        oldItem = _.find(array, {
-                            _id: itemId
-                        });
-
-                        angular.copy(item, array);
-                        cb('updated', item, array);
+                    if (item === null) {
+                        return;
+                    }
+                    if (!_.isArray(array)) {
+                        if (!array) {
+                            angular.copy(item, array);
+                            cb('updated', item, array);
+                        }
+                        if (!_.isArray(item) && !_.isArray(array)) {
+                            if (array._id === item._id) {
+                                angular.copy(item, array);
+                                cb('updated', item, array);
+                            }
+                        }
                     } else {
                         oldItem = _.find(array, {
                             _id: item._id
@@ -50,8 +56,7 @@ angular.module('projiSeApp')
                         var index = array.indexOf(oldItem);
                         var event = 'created';
 
-                        // replace oldItem if it exists
-                        // otherwise just add item to the collection
+
                         if (oldItem) {
                             array.splice(index, 1, item);
                             event = 'updated';
