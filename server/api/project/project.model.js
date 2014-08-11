@@ -9,7 +9,15 @@ var ProjectSchema = new Schema({
     users: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }]
+    }],
+    sprints: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Sprint'
+    }],
+    // tasks: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Task'
+    // }]
 });
 
 module.exports = mongoose.model('Project', ProjectSchema);

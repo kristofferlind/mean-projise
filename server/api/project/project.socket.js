@@ -5,6 +5,8 @@
 'use strict';
 
 var project = require('./project.model');
+var populateQuery = [{path: 'users', select: '-salt -hashedPassword'}, {path: 'sprints', select: '', model: 'Sprint'}]
+
 
 var sanitize = function(doc) {
     delete doc.hashedPassword;
@@ -27,19 +29,13 @@ var onRemove = function(socket, doc, cb) {
 
 exports.register = function(socket) {
     project.schema.post('save', function(doc) {
-        project.populate(doc, {
-            path: 'users',
-            select: '-salt -hashedPassword'
-        }, function(err, populated) {
+        project.populate(doc, populateQuery, function(err, populated) {
             var sanitized = sanitize(populated)
             onSave(socket, sanitized);
         })
     });
     project.schema.post('remove', function(doc) {
-        project.populate(doc, {
-            path: 'users',
-            select: '-salt -hashedPassword'
-        }, function(err, populated) {
+        project.populate(doc, populateQuery, function(err, populated) {
             var sanitized = sanitize(populated)
             onRemove(socket, sanitized);
         })

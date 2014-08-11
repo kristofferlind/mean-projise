@@ -4,7 +4,9 @@
 }
 
 .navpanel-switch {
-    float: left;
+    position: absolute;
+    left: 10px;
+    z-index: 5;
 }
 
 .panel-group {

@@ -1,8 +1,8 @@
 .navbar {
     background-color: $color-navbar-bg;
     color: $color-text-inverse;
-    padding: 10px;
     box-sizing: border-box;
+    padding-top: 10px;
 }
 
 .navbar a {
@@ -15,6 +15,14 @@
 
 .navbar-branding {
     font-size: 30px;
-    margin-left: 10px;
+    margin-left: 40px;
+    line-height: 30px;
+    position: absolute;
+}
+
+.navbar-project {
+    width: 100%;
+    text-align: center;
+    position: absolute;
     line-height: 30px;
 }

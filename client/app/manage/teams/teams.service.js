@@ -86,7 +86,7 @@ angular.module('projiSeApp').factory('Team', function($http, $rootScope, TeamPro
         }
     }, function() {
         var team = Team.activeTeam();
-        if (team.users) {
+        if (team && team.users) {
             _users = angular.copy(team.users);
         }
     }, true);

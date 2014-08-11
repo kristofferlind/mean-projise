@@ -41,6 +41,16 @@ angular.module('projiSeApp', [
         $httpProvider.interceptors.push('authInterceptor');
     })
 
+    .config(function($tooltipProvider) {
+        $tooltipProvider.options({
+            animation: true,
+            popupDelay: 450
+        });
+        $tooltipProvider.setTriggers({
+            'mouseenter': 'mouseleave click'
+        });
+    })
+
 .factory('authInterceptor', function($rootScope, $q, $cookieStore, $location) {
     return {
         // Add authorization token to headers

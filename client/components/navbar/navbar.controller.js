@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('projiSeApp')
-    .controller('NavbarController', function($scope, $location, Auth, PanelSwitch) {
+    .controller('NavbarController', function($scope, $location, Auth, PanelSwitch, Project) {
+
+        $scope.Project = Project;
 
         $scope.navpanelSwitch = function() {
             PanelSwitch.navpanel.switch();

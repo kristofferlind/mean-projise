@@ -20,6 +20,8 @@ function onConnect(socket) {
     require('../api/project/project.socket').register(socket);
     require('../api/team/team.socket').register(socket);
     require('../api/user/user.socket').register(socket);
+    require('../api/sprint/sprint.socket').register(socket);
+    require('../api/story/story.socket').register(socket);
 }
 
 module.exports = function(socketio) {

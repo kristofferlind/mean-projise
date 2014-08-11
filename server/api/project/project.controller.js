@@ -24,16 +24,15 @@ exports.index = function(req, res) {
             return handleError(res, err);
         }
 
-        User.populate(user.projects, {
-            path: 'users',
-            select: '-salt -hashedPassword'
-        }, function(err, projects) {
+        var populateQuery = [{path: 'users', select: '-salt -hashedPassword'}]
+
+        User.populate(user.projects, populateQuery, function(err, projects) {
             if (err) {
                 return handleError(res, err);
             }
             return res.json(200, projects);
-        })
-    })
+        });
+    });
 };
 
 // Get a single project
@@ -45,6 +44,7 @@ exports.show = function(req, res) {
         if (!project) {
             return res.send(404);
         }
+
         return res.json(project);
     });
 };

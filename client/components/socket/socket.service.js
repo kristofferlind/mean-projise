@@ -33,6 +33,7 @@ angular.module('projiSeApp')
                 /**
                  * Syncs item creation/updates on 'model:save'
                  */
+
                 socket.on(modelName + ':save', function(item) {
                     var oldItem;
                     if (item === null) {

@@ -1,3 +1,5 @@
+split app modules into ui/logic?
+
 ##Managing "session" vars
 
 states      vars
