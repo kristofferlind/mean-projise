@@ -27,7 +27,7 @@ angular.module('projiSeApp')
              * @param {Array} array
              * @param {Function} cb
              */
-            syncUpdates: function(modelName, array, cb) {
+            syncUpdates: function(modelName, array, isSprintBacklog, cb) {
                 cb = cb || angular.noop;
 
                 /**
@@ -36,10 +36,12 @@ angular.module('projiSeApp')
 
                 socket.on(modelName + ':save', function(item) {
                     var oldItem;
+
                     if (item === null) {
                         return;
                     }
                     if (!_.isArray(array)) {
+
                         if (!array) {
                             angular.copy(item, array);
                             cb('updated', item, array);
@@ -59,8 +61,12 @@ angular.module('projiSeApp')
 
 
                         if (oldItem) {
-                            array.splice(index, 1, item);
-                            event = 'updated';
+                            if (modelName === 'story' && oldItem.sprintId && !item.sprintId && isSprintBacklog === true) {
+                                _.remove(array, {_id: item._id});
+                            } else {
+                                array.splice(index, 1, item);
+                                event = 'updated';
+                            }
                         } else {
                             array.push(item);
                         }

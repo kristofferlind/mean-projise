@@ -7,7 +7,7 @@
  */
 
 'use strict';
-// var _ = require('lodash');
+var _ = require('lodash');
 var Story = require('./story.model');
 var User = require('../user/user.model');
 var handleError = function(res, err) {
@@ -73,6 +73,9 @@ exports.update = function(req, res) {
             return res.send(404);
         }
 
+        story.sprintId = undefined;
+        story.userId = undefined;
+
         var updated = _.merge(story, req.body);
         updated.save(function(err) {
             if (err) {
@@ -85,7 +88,7 @@ exports.update = function(req, res) {
 
 // Deletes a project from the DB.
 exports.destroy = function(req, res) {
-    Story.findById(req.params.id, function(err, story) {
+    Story.findById(req.params.storyId, function(err, story) {
         if (err) {
             return handleError(res, err);
         }

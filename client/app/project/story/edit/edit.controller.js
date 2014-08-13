@@ -1,11 +1,11 @@
 angular.module('projiSeApp')
-    .controller('sprintEditController', function($scope, $modalInstance, sprint) {
+    .controller('storyEditController', function($scope, $modalInstance, story) {
         'use strict';
 
-        $scope.sprint = sprint;
+        $scope.story = story;
 
         $scope.update = function() {
-            $modalInstance.close($scope.sprint);
+            $modalInstance.close($scope.story);
         };
 
         $scope.cancel = function() {

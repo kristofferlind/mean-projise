@@ -22,15 +22,15 @@ angular.module('projiSeApp', [
             },
             views: {
                 'header': {
-                    templateUrl: 'components/navbar/navbar.html',
+                    templateUrl: 'app/navbar/navbar.html',
                     controller: 'NavbarController'
                 },
                 'panelLeft': {
-                    templateUrl: 'components/navpanel/navpanel.html',
+                    templateUrl: 'app/navpanel/navpanel.html',
                     controller: 'NavpanelController'
                 },
                 'panelRight': {
-                    templateUrl: 'components/chatpanel/chatpanel.html',
+                    templateUrl: 'app/chatpanel/chatpanel.html',
                     controller: 'ChatpanelController'
                 }
 

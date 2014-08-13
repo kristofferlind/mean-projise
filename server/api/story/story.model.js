@@ -16,6 +16,14 @@ var StorySchema = new Schema({
     sprintId: {
         type: Schema.Types.ObjectId,
         ref: 'Sprint'
+    },
+    status: {
+        type: String,
+        enum: ['not started', 'in progress', 'completed']
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 });
 

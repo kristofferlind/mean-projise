@@ -4,4 +4,8 @@ angular.module('projiSeApp')
 
         $scope.Sprint = Sprint;
         $scope.Story = Story;
+
+        $scope.filter = {
+            pbStatus: 'not started'
+        };
     });

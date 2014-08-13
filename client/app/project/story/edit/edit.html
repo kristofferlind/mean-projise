@@ -1,18 +1,21 @@
-<h2>Edit sprint</h2>
-<form role="form" name="sprint_create" ng-submit="update()">
+<h2>Edit story</h2>
+<form role="form" name="story_edit" ng-submit="update()">
     <fieldset>
-        <label for="sprint_name">Name</label>
-        <input id="sprint_name" type="text" placeholder="Name" ng-model="sprint.name" maxlength="50" ng-maxlength="50" required>
+        <label for="story_name">Name</label>
+        <input id="story_name" type="text" placeholder="Name" ng-model="story.name" maxlength="50" ng-maxlength="50" required>
 
-        <label for="sprint_goal">Goal</label>
-        <textarea id="sprint_goal" type="text" placeholder="Name" ng-model="sprint.goal" maxlength="250" ng-maxlength="250" required></textarea>
+        <label for="story_description">Description</label>
+        <textarea id="story_description" type="text" placeholder="Description" ng-model="story.description" maxlength="250" ng-maxlength="250" required></textarea>
 
-        <label for="sprint_start">Start</label>
-        <input id="sprint_start" type="date" ng-model="sprint.start">
+        <label for="story_tags">Tags</label>
+        <textarea id="story_tags" type="text" placeholder="Tag, tag, tag.." ng-model="story.tags" maxlength="250" ng-maxlength="250"></textarea>
 
-        <label for="sprint_end">End</label>
-        <input id="sprint_end" type="date" ng-model="sprint.end">
+        <label for="story_priority">Priority</label>
+        <input id="story_priority" type="range" min="1" max="100" value="4" ng-model="story.priority">
+
+        <label for="story_points">Points</label>
+        <input id="story_points" type="range" min="1" max="100" value="4" ng-model="story.points">
     </fieldset>
-    <button class="button button-primary" ng-disabled="sprint_create.$invalid" type="submit">Update</button>
+    <button class="button button-primary" ng-disabled="story_edit.$invalid" type="submit">Edit</button>
     <button class="button button-secondary" type="button" ng-click="cancel()">Cancel</button>
 </form>

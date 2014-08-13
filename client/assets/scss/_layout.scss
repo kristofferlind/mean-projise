@@ -46,3 +46,11 @@ html, body {
 .grid-3-3 {
     @include span(full);
 }
+
+.grid-1-6 {
+    @include span(2 of 12);
+}
+
+.grid-5-6 {
+    @include span(10 of 12);
+}
