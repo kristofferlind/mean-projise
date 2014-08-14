@@ -26,8 +26,6 @@
     cursor: pointer;
     background-color: $color-accordion-bg;
     border-top: 1px solid $black;
-    border-left: 1px solid $black;
-    border-right: 1px solid $black;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transition: all 150ms ease-in;
 }
@@ -80,8 +78,6 @@
     padding: 15px;
     background-color: $color-accordion-item-bg;
     border-top: 1px solid $black;
-    border-left: 1px solid $black;
-    border-right: 1px solid $black;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transition: all 150ms ease-in;
     color: $black;
