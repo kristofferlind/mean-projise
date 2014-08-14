@@ -25,7 +25,7 @@ angular.module('projiSeApp')
                 },
                 views: {
                     'main@': {
-                        templateUrl: 'app/project/overview/overview.html',
+                        templateUrl: 'app/project/project/overview.html',
                         controller: 'OverviewController'
                     }
                 }

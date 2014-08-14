@@ -1,5 +1,6 @@
 angular.module('projiSeApp')
-    .controller('OverviewController', function($scope) {
+    .controller('OverviewController', function($scope, Idea) {
         'use strict';
-        $scope.test = 'test';
+
+        $scope.Idea = Idea;
     });

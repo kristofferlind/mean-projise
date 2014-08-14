@@ -64,26 +64,20 @@ angular.module('projiSeApp').factory('Story', function($http, $modal, $rootScope
                 },
                 story: {},
                 start: function(story) {
-                    // console.log(story.name + ' start');
                     if (story.userId || Story.User.story) {
                         return;
                     }
                     story.status = 'in progress';
                     story.userId = _user._id;
                     Story.update(story);
-                    // Task.setAll(story);
                 },
                 stop: function(story) {
-                    // var user = Session.user();
-                    // console.log(story.name + ' start');
                     story.status = 'not started';
                     story.userId = undefined;
                     Story.update(story);
                     Task.all.length = 0;
                 },
                 finish: function(story) {
-                    // var user = Session.user();
-                    // console.log(story.name + ' start');
                     story.status = 'completed';
                     story.userId = undefined;
                     Story.update(story);

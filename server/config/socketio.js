@@ -23,6 +23,7 @@ function onConnect(socket) {
     require('../api/sprint/sprint.socket').register(socket);
     require('../api/story/story.socket').register(socket);
     require('../api/task/task.socket').register(socket);
+    require('../api/idea/idea.socket').register(socket);
 }
 
 module.exports = function(socketio) {
