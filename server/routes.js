@@ -16,6 +16,8 @@ module.exports = function(app) {
     app.use('/api/stories', require('./api/story'));
     app.use('/api/tasks', require('./api/task'));
     app.use('/api/ideas', require('./api/idea'));
+    app.use('/api/documentsMeta', require('./api/documentMeta'));
+    app.use('/api/documentsData', require('./api/documentData'));
 
     app.use('/auth', require('./auth'));
 

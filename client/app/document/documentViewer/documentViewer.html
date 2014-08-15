@@ -1,0 +1,13 @@
+<div class="grid">
+    <div class="grid-3-3">
+        <div ng-hide="DocumentManager.activeDocument">
+            <h2>No active document</h2>
+            <p>Click show document to view a document here.</p>
+        </div>
+
+        <div ng-show="DocumentManager.activeDocument">
+            <h2>{{DocumentManager.activeDocument.name}}</h2>
+            <p>{{DocumentManager.activeDocument.description}}</p>
+        </div>
+    </div>
+</div>

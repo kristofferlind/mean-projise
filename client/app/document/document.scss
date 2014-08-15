@@ -1,0 +1,13 @@
+.document-flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+.document-manager {
+    flex: 1;
+}
+
+.document-viewer {
+    flex: 1;
+}
