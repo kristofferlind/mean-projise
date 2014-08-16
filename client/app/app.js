@@ -6,7 +6,8 @@ angular.module('projiSeApp', [
     'ngSanitize',
     'btford.socket-io',
     'ui.router',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'btford.markdown'
 ])
     .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider

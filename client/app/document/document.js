@@ -37,6 +37,7 @@ angular.module('projiSeApp')
             })
             .state('dashboard.document.editor', {
                 authenticate: true,
+                url: '/edit',
                 views: {
                     'manager': {
                         templateUrl: 'app/document/documentEditor/documentEditor.html',

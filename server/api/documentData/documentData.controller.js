@@ -8,7 +8,7 @@ var _ = require('lodash'),
     };
 
 exports.find = function(req, res) {
-    DocumentData.find({documentId: req.params.documentDataId}, function(err, documentData) {
+    DocumentData.findOne({documentId: req.params.documentDataId}, function(err, documentData) {
         if (err) {
             return handleError(res, err);
         }
@@ -22,7 +22,7 @@ exports.update = function(req, res) {
         delete req.body._id;
     }
 
-    DocumentData.find({documentId: req.params.documentDataId}, function(err, documentData) {
+    DocumentData.findById(req.params.documentDataId, function(err, documentData) {
         if (err) {
             return handleError(res, err);
         }
@@ -31,14 +31,14 @@ exports.update = function(req, res) {
             return res.send(404);
         }
 
-        var updated = _.merge(documentData, req.body);
+        documentData.data = req.body.data;
 
-        updated.save(function(err) {
+        documentData.save(function(err) {
             if (err) {
                 return handleError(res, err);
             }
 
-            return res.json(201, updated);
+            return res.json(201, documentData);
         });
     });
 };

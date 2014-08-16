@@ -18,10 +18,15 @@ html, body {
     height: 50px;
 }
 
+.flex-height {
+    flex: 1;
+    display: flex;
+}
+
 .main {
     background-color: $white;
     flex: 1;
-    height: 100%;
+    display: flex;
 }
 
 .full-height {
@@ -31,6 +36,8 @@ html, body {
 
 .grid {
     @include container(100%);
+    min-height: 100%;
+    width: 100%;
 }
 
 .grid-1-3 {

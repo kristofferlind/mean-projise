@@ -6,8 +6,7 @@
         </div>
 
         <div ng-show="DocumentManager.activeDocument">
-            <h2>{{DocumentManager.activeDocument.name}}</h2>
-            <p>{{DocumentManager.activeDocument.description}}</p>
+            <div btf-markdown="DocumentManager.activeDocumentData.data"></div>
         </div>
     </div>
 </div>
