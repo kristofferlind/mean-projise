@@ -3,6 +3,11 @@
     Description: scrolls to bottom of element on render
 */
 
+//scrollBottom.directive.js
+/**
+ * @name scrollBottom
+ * @description Scroll element to bottom on change
+ */
 angular.module('projiSeApp')
 
 .directive('scrollBottom', function() {

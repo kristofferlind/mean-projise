@@ -1,5 +1,8 @@
 'use strict';
-
+/**
+ * @name SignupCtrl
+ * @description Controller for signup view
+ */
 angular.module('projiSeApp')
     .controller('SignupCtrl', function($scope, Auth, $location, $window) {
         $scope.user = {};

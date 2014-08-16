@@ -2,6 +2,8 @@
 
 module.exports = function(grunt) {
 
+    var Dgeni = require('dgeni');
+
     // Load grunt tasks automatically, when needed
     require('jit-grunt')(grunt, {
         express: 'grunt-express-server',
@@ -626,4 +628,10 @@ module.exports = function(grunt) {
         'test',
         'build'
     ]);
+
+    grunt.registerTask('dgeni', 'Generate docs via dgeni.', function() {
+        var done = this.async();
+        var dgeni = new Dgeni([require('./docs/dgeni-generator')]);
+        dgeni.generate().then(done);
+    });
 };

@@ -1,6 +1,15 @@
+//chatpanel.controller.js
+/**
+ * @name ChatPanelController
+ * @description Viewlogic for Chatpanel, manages panelstate and sending messages
+ * @todo move most of sendMessage logic to a directive (on-enter, shift-key:true default:false..)
+ * @todo panelstate should be moved to directive
+ * @todo clear newMessage on send (needs to wait until post is sent)
+ */
 angular.module('projiSeApp').controller('ChatpanelController', function($scope, PanelSwitch, $timeout, Chat) {
     'use strict';
 
+    //Make Chat service available in view
     $scope.Chat = Chat;
 
     $scope.newMessage = {
@@ -35,7 +44,7 @@ angular.module('projiSeApp').controller('ChatpanelController', function($scope, 
                 //add message to firebase
                 Chat.sendMessage($scope.newMessage);
                 //clear input field
-                // $scope.newMessage.message.focus();
+                // $scope.newMessage.message.focus();   //for some reason this sends an empty message.. need to make sure post is sent before emptying
             }
         }
     };

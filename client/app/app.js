@@ -1,5 +1,11 @@
 'use strict';
 
+
+// app.js
+/**
+ * @name App
+ * @description This module handles initiation logic and root routes.
+ */
 angular.module('projiSeApp', [
     'ngCookies',
     'ngResource',

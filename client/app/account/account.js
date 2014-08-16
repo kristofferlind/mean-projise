@@ -1,5 +1,9 @@
 'use strict';
-
+//account.js
+/**
+ * @name account.js
+ * @description Manages routes for account states(pages)
+ */
 angular.module('projiSeApp')
     .config(function($stateProvider) {
         $stateProvider

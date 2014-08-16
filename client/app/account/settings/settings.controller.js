@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * @name SettingsCtrl
+ * @description Manages account settings view
+ * @todo Needs more settings, currently only possible to change password
+ */
 angular.module('projiSeApp')
     .controller('SettingsCtrl', function($scope, User, Auth) {
         $scope.errors = {};

@@ -1,8 +1,10 @@
-/*
-    Filter: lineBreak
-    Description: Replace linky line-break to html line break. Should also replace \n to be reusable.
-*/
-
+//lineBreak.filter.js
+/**
+ * @name lineBreak
+ * @description Replace linky linebreak to html linebreak
+ * @todo Replace \n aswell
+ * @todo Add options to make it reusable
+ */
 angular.module('projiSeApp')
 
 .filter('lineBreak', function() {
