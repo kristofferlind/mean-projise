@@ -26,6 +26,7 @@ function onConnect(socket) {
     require('../api/idea/idea.socket').register(socket);
     require('../api/documentMeta/documentMeta.socket').register(socket);
     require('../api/documentData/documentData.socket').register(socket);
+    require('../api/message/message.socket').register(socket);
 }
 
 module.exports = function(socketio) {

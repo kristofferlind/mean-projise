@@ -21,6 +21,7 @@ html, body {
 .flex-height {
     flex: 1;
     display: flex;
+    flex-flow: column;
 }
 
 .main {
