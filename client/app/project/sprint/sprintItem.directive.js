@@ -1,8 +1,8 @@
-/*
-    Directive: sprintItem
-    Description: Template and logic for showing sprint item
-*/
-
+/**
+ * @ngdoc directive
+ * @name  sprintItem
+ * @description Handles sprintitems, styling based on status and linking it to a partial
+ */
 angular.module('projiSeApp')
 
 .directive('sprintItem', function() {

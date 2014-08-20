@@ -1,6 +1,11 @@
 'use strict';
 /**
+ * @ngdoc object
  * @name SignupCtrl
+ * @requires  $scope
+ * @requires  Auth
+ * @requires  $location
+ * @requires  $window
  * @description Controller for signup view
  */
 angular.module('projiSeApp')
@@ -8,6 +13,11 @@ angular.module('projiSeApp')
         $scope.user = {};
         $scope.errors = {};
 
+        /**
+         * @ngdoc function
+         * @name  $scope.register
+         * @description  Viewlogic for registering a new user
+         */
         $scope.register = function(form) {
             $scope.submitted = true;
 
@@ -34,6 +44,11 @@ angular.module('projiSeApp')
             }
         };
 
+        /**
+         * @ngdoc function
+         * @name  $scope.loginOauth
+         * @description  Viewlogic for logging in using oauth
+         */
         $scope.loginOauth = function(provider) {
             $window.location.href = '/auth/' + provider;
         };

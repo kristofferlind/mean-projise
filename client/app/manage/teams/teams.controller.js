@@ -1,7 +1,11 @@
-'use strict';
-
+/**
+ * @ngdoc object
+ * @name TeamsController
+ * @description Viewlogic for managing teams
+ */
 angular.module('projiSeApp')
     .controller('TeamsController', function($scope, Team) {
+        'use strict';
 
         $scope.Team = Team;
 

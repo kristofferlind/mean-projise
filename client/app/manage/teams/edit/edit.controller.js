@@ -1,3 +1,8 @@
+/**
+ * @ngdoc object
+ * @name TeamEditController
+ * @description Viewlogic for editing team metadata
+ */
 angular.module('projiSeApp')
     .controller('teamEditController', function($scope, $modalInstance, team) {
         'use strict';

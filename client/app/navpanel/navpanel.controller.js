@@ -1,3 +1,8 @@
+/**
+ * @ngdoc object
+ * @name  NavpanelController
+ * @description  Viewlogic for navpanel (menu in left sidebar)
+ */
 angular.module('projiSeApp').controller('NavpanelController', function($scope, PanelSwitch, $timeout) {
     'use strict';
 

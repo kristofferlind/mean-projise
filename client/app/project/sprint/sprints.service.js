@@ -1,8 +1,22 @@
+/**
+ * @ngdoc service
+ * @name  Sprint
+ * @required $http
+ * @required $modal
+ * @required SprintProvider
+ * @description Service for managing sprints
+ */
 angular.module('projiSeApp').factory('Sprint', function($http, $modal, SprintProvider) {
     'use strict';
 
     var _sprints = SprintProvider.sprints,
         Sprint = {
+            /**
+             * @ngdoc method
+             * @name  activeSprint
+             * @returns {object} Current sprint based on date
+             * @description Figures out which sprint is active based on date and returns it
+             */
             activeSprint: function() {
                 var now = new Date().getTime();
 
@@ -34,25 +48,57 @@ angular.module('projiSeApp').factory('Sprint', function($http, $modal, SprintPro
 
                 //NOTIFY no active sprint,
             },
+            /**
+             * @ngdoc property
+             * @name  activeSprintId
+             * @type {Object}
+             * @description Currently active sprintId
+             */
             activeSprintId: {},
+            /**
+             * @ngdoc method
+             * @name  all
+             * @return {Array}
+             * @description  Returns all sprints in project
+             */
             all: function() {
                 return _sprints;
             },
+            /**
+             * @ngdoc method
+             * @name  create
+             * @description Create sprint using modal for user input
+             */
             create: function() {
+                //Open modal for user input
                 var createModal = $modal.open({
                     templateUrl: 'app/project/sprint/create/create.html',
                     controller: 'sprintCreateController'
                 });
 
+                //Send to backend on submit
                 createModal.result.then(function(sprint) {
                     $http.post('/api/sprints', sprint);
                 });
             },
+            /**
+             * @ngdoc method
+             * @name  delete
+             * @param {Object} sprint Sprint object
+             * @description Delete project
+             */
             delete: function(sprint) {
                 $http.delete('/api/sprints/' + sprint._id);
             },
             // find: function() {},
+            /**
+             * @ngdoc method
+             * @name  update
+             * @param {Object} sprint Sprint object
+             * @description Update sprint using modal for user input
+             */
             update: function(sprint) {
+                //Open modal for user input
                 var editModal = $modal.open({
                     templateUrl: 'app/project/sprint/edit/edit.html',
                     controller: 'sprintEditController',
@@ -63,6 +109,7 @@ angular.module('projiSeApp').factory('Sprint', function($http, $modal, SprintPro
                     }
                 });
 
+                //Send to backend on submit
                 editModal.result.then(function(sprint) {
                     $http.put('/api/sprints/' + sprint._id, sprint);
                 });

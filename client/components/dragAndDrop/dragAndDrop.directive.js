@@ -1,8 +1,8 @@
-/*
-    Directive: drag
-    Description: Makes an item draggable, saves its data to be able to transfer on drop
-*/
-
+/**
+ * @ngdoc directive
+ * @name drag
+ * @description Makes an item draggable, saves its data to be able to transfer on drop
+ */
 angular.module('projiSeApp')
 
 .directive('drag', function() {
@@ -35,11 +35,11 @@ angular.module('projiSeApp')
     };
 });
 
-/*
-    Directive: drop
-    Description: Sets element as dropzone, fetches saved data and executes on-drop expression (most likely a function)
-*/
-
+/**
+ * @ngdoc directive
+ * @name  drop
+ * @description Sets element as dropzone, fetches saved data and executes on-drop expression (most likely a function)
+ */
 angular.module('projiSeApp')
 
 

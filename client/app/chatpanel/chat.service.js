@@ -1,5 +1,5 @@
-//chat.service.js
 /**
+ * ngdoc service
  * @name Chat
  * @description Service for Chat, manages messages
  */
@@ -17,7 +17,6 @@ angular.module('projiSeApp').factory('Chat', function($http, socket) {
     var Chat = {
         messages: [],
         sendMessage: function(message) {
-            console.log(message);
             $http.post('/api/messages', message);
         }
     };

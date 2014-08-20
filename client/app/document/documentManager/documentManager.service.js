@@ -1,6 +1,7 @@
-//documentManager.service.js
 /**
+ * @ngdoc service
  * @module DocumentManager
+ * @name  DocumentManager
  * @description Service for managing documents
  */
 angular.module('projiSeApp').factory('DocumentManager', function($http, $q, $modal, $state, socket) {
@@ -17,7 +18,10 @@ angular.module('projiSeApp').factory('DocumentManager', function($http, $q, $mod
 
     var DocumentManager = {
 
-        /** List of metadata for all documents */
+        /**
+         * @name all
+         * @description List of metadata for all documents
+         */
         all: [],
 
         /** Metadata for active document */
@@ -26,7 +30,9 @@ angular.module('projiSeApp').factory('DocumentManager', function($http, $q, $mod
         /** Document body for active document */
         activeDocumentData: {},
 
-        /** Create document, opens modal and sends post request on submit */
+        /**
+         * Create document, opens modal and sends post request on submit
+         */
         create: function() {
             //Open modal
             var createModal = $modal.open({
@@ -41,6 +47,10 @@ angular.module('projiSeApp').factory('DocumentManager', function($http, $q, $mod
         },
 
         /** Open document in editor */
+        /**
+         * Open document in editor
+         * @param documentMeta document metadata
+         */
         edit: function(documentMeta) {
 
             //Fetch, set and view data for active document

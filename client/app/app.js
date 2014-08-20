@@ -1,7 +1,5 @@
 'use strict';
 
-
-// app.js
 /**
  * @name App
  * @description This module handles initiation logic and root routes.
@@ -15,48 +13,48 @@ angular.module('projiSeApp', [
     'ui.bootstrap',
     'btford.markdown'
 ])
-    .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-        $urlRouterProvider
-            .otherwise('/');
+.config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    $urlRouterProvider
+        .otherwise('/');
 
-        $stateProvider.state('dashboard', {
-            url: '',
-            abstract: true,
-            resolve: {
-                resolvedSession: function(Session) {
-                    return Session.promise;
-                }
-            },
-            views: {
-                'header': {
-                    templateUrl: 'app/navbar/navbar.html',
-                    controller: 'NavbarController'
-                },
-                'panelLeft': {
-                    templateUrl: 'app/navpanel/navpanel.html',
-                    controller: 'NavpanelController'
-                },
-                'panelRight': {
-                    templateUrl: 'app/chatpanel/chatpanel.html',
-                    controller: 'ChatpanelController'
-                }
-
+    $stateProvider.state('dashboard', {
+        url: '',
+        abstract: true,
+        resolve: {
+            resolvedSession: function(Session) {
+                return Session.promise;
             }
-        });
+        },
+        views: {
+            'header': {
+                templateUrl: 'app/navbar/navbar.html',
+                controller: 'NavbarController'
+            },
+            'panelLeft': {
+                templateUrl: 'app/navpanel/navpanel.html',
+                controller: 'NavpanelController'
+            },
+            'panelRight': {
+                templateUrl: 'app/chatpanel/chatpanel.html',
+                controller: 'ChatpanelController'
+            }
 
-        $locationProvider.html5Mode(true);
-        $httpProvider.interceptors.push('authInterceptor');
-    })
+        }
+    });
 
-    .config(function($tooltipProvider) {
-        $tooltipProvider.options({
-            animation: true,
-            popupDelay: 450
-        });
-        $tooltipProvider.setTriggers({
-            'mouseenter': 'mouseleave click'
-        });
-    })
+    $locationProvider.html5Mode(true);
+    $httpProvider.interceptors.push('authInterceptor');
+})
+
+.config(function($tooltipProvider) {
+    $tooltipProvider.options({
+        animation: true,
+        popupDelay: 450
+    });
+    $tooltipProvider.setTriggers({
+        'mouseenter': 'mouseleave click'
+    });
+})
 
 .factory('authInterceptor', function($rootScope, $q, $cookieStore, $location) {
     return {

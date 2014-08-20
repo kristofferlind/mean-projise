@@ -1,3 +1,8 @@
+/**
+ * @ngdoc object
+ * @name  StoryCreateController
+ * @description Handles modal for creating stories
+ */
 angular.module('projiSeApp')
     .controller('storyCreateController', function($scope, $modalInstance) {
         'use strict';

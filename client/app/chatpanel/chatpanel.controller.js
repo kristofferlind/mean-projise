@@ -1,10 +1,11 @@
 //chatpanel.controller.js
 /**
+ * @ngdoc object
  * @name ChatPanelController
- * @description Viewlogic for Chatpanel, manages panelstate and sending messages
  * @todo move most of sendMessage logic to a directive (on-enter, shift-key:true default:false..)
  * @todo panelstate should be moved to directive
  * @todo clear newMessage on send (needs to wait until post is sent)
+ * @description Viewlogic for Chatpanel, manages panelstate and sending messages
  */
 angular.module('projiSeApp').controller('ChatpanelController', function($scope, PanelSwitch, $timeout, Chat) {
     'use strict';

@@ -1,3 +1,8 @@
+/**
+ * @ngdoc object
+ * @name TeamCreateCotroller
+ * @description Viewlogic for creating teams
+ */
 angular.module('projiSeApp')
     .controller('teamCreateController', function($scope, $modalInstance) {
         'use strict';

@@ -1,11 +1,11 @@
-/*
-    Filter: toArray
-    Description: Rebuilds firebase object(omnibinder) to an array that angular can work with.
+/**
+ * @ngdoc filter
+ * @name  toArray
+ * @todo  Check if this is even used, if it is. Refactor, it's really hard to follow.
+ * @description Rebuilds firebase object(omnibinder) to an array that angular can work with.
     This makes it possible to use angulars builtin filters for order, limit, filter..
-*/
-
+ */
 angular.module('projiSeApp')
-
 .filter('toArray', function() {
     'use strict';
     return function(input) {

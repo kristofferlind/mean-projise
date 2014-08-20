@@ -1,3 +1,8 @@
+/**
+ * @ngdoc object
+ * @name  SprintEditController
+ * @description Handles modal for editing sprints
+ */
 angular.module('projiSeApp')
     .controller('sprintEditController', function($scope, $modalInstance, sprint) {
         'use strict';

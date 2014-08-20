@@ -1,5 +1,5 @@
-//documentList.controller.js
 /**
+ * @ngdoc object
  * @name DocumentListController
  * @description Viewlogic for managing documents
  */

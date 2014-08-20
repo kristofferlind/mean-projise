@@ -1,10 +1,9 @@
-/*
-    Filter: toCSSName
-    Description: Replaces ' ' with '-' and makes the string lowercase.
-*/
-
+/**
+ * @ngdoc filter
+ * @name  toCSSName
+ * @description Make lowercase and replace ' ' with '-'.
+ */
 angular.module('projiSeApp')
-
 .filter('toCSSName', function() {
     'use strict';
     return function(input) {

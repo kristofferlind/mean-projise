@@ -1,3 +1,8 @@
+/**
+ * @ngdoc object
+ * @name  SprintCreateController
+ * @description Handles modal for creating sprints
+ */
 angular.module('projiSeApp')
     .controller('sprintCreateController', function($scope, $modalInstance) {
         'use strict';

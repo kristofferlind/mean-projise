@@ -1,10 +1,9 @@
-/*
-    Directive: confirmShow
-    Description: Shows confirm message
-*/
-
+/**
+ * @ngdoc directive
+ * @name  confirmShow
+ * @description Shows confirm message
+ */
 angular.module('projiSeApp')
-
 .directive('confirmShow', function() {
     'use strict';
     // Runs during compile

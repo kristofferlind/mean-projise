@@ -1,14 +1,22 @@
 'use strict';
 
 /**
+ * @ngdoc object
  * @name SettingsCtrl
- * @description Manages account settings view
+ * @requires $scope
+ * @requires User
+ * @requires Auth
  * @todo Needs more settings, currently only possible to change password
+ * @description Manages account settings view
  */
 angular.module('projiSeApp')
     .controller('SettingsCtrl', function($scope, User, Auth) {
         $scope.errors = {};
 
+        /**
+         * @ngdoc function
+         * @description Viewlogic for changing password
+         */
         $scope.changePassword = function(form) {
             $scope.submitted = true;
             if (form.$valid) {

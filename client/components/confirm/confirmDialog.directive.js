@@ -1,8 +1,9 @@
-/*
-    Directive: confirmDialog
-    Description: Tell confirmShow to display dialog. Run onConfirm function on yes
-*/
-
+/**
+ * @ngdoc directive
+ * @name  confirmDialog
+ * @todo  generating what looks like a guid for this is kind of insane, just use itemId
+ * @description Tell confirmShow to display dialog. Run onConfirm function on yes
+ */
 angular.module('projiSeApp')
 
 .directive('confirmDialog', function() {

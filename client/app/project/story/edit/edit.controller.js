@@ -1,3 +1,8 @@
+/**
+ * @ngdoc object
+ * @name  StoryEditController
+ * @description Handles modal for editing stories
+ */
 angular.module('projiSeApp')
     .controller('storyEditController', function($scope, $modalInstance, story) {
         'use strict';

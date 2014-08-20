@@ -1,10 +1,5 @@
-/*
-    Directive: scrollBottom
-    Description: scrolls to bottom of element on render
-*/
-
-//scrollBottom.directive.js
 /**
+ * @ngdoc directive
  * @name scrollBottom
  * @description Scroll element to bottom on change
  */

@@ -1,6 +1,7 @@
-//documentEditor.controller.js
 /**
- * @name documentEditorController
+ * @ngdoc object
+ * @name DocumentEditorController
+ * @todo  should work better for multiple users (operational transformation)
  * @description Viewlogic for document editor
  */
 angular.module('projiSeApp').controller('DocumentEditorController', function($scope, DocumentManager) {

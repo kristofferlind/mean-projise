@@ -1,9 +1,10 @@
 //lineBreak.filter.js
 /**
+ * @ngdoc filter
  * @name lineBreak
- * @description Replace linky linebreak to html linebreak
  * @todo Replace \n aswell
  * @todo Add options to make it reusable
+ * @description Replace linky linebreak to html linebreak
  */
 angular.module('projiSeApp')
 

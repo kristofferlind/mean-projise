@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * @ngdoc object
+ * @name  DocumentStates
+ * @description Defines routes and general settings for document states
+ */
 angular.module('projiSeApp')
     .config(function($stateProvider) {
         $stateProvider

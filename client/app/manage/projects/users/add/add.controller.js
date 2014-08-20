@@ -1,3 +1,8 @@
+/**
+ * @ngdoc object
+ * @name ProjectAddUserController
+ * @description Viewlogic for adding users to a project
+ */
 angular.module('projiSeApp')
     .controller('projectAddUserController', function($scope, $modalInstance) {
         'use strict';

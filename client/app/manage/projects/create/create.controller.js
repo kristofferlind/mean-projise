@@ -1,3 +1,8 @@
+/**
+ * @ngdoc object
+ * @name ProjectCreateController
+ * @description Viewlogic for creating projects
+ */
 angular.module('projiSeApp')
     .controller('projectCreateController', function($scope, $modalInstance) {
         'use strict';

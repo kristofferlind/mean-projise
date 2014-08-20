@@ -1,3 +1,8 @@
+/**
+ * @ngdoc service
+ * @name TeamProvider
+ * @description Provides teamdata for Teamservice and manages sync with backend
+ */
 angular.module('projiSeApp').factory('TeamProvider', function($http, socket) {
     'use strict';
 

@@ -1,10 +1,14 @@
 'use strict';
 
-// login.controller.js
 /**
+ * @ngdoc object
  * @name LoginCtrl
- * @description Handles logic for login view.
+ * @requires $scope
+ * @requires Auth
+ * @requires $location
+ * @requires $window
  * @todo Sometimes login doesn't redirect
+ * @description Handles logic for login view.
  */
 angular.module('projiSeApp')
     .controller('LoginCtrl', function($scope, Auth, $location, $window) {
@@ -12,11 +16,11 @@ angular.module('projiSeApp')
         $scope.errors = {};
 
         /**
+         * @ngdoc function
          * @name $scope.login
-         * @description Logic for logging in
          * @param formdata, for authenticating user
+         * @description Logic for logging in
          */
-
         $scope.login = function(form) {
             $scope.submitted = true;
 
@@ -36,9 +40,10 @@ angular.module('projiSeApp')
         };
 
         /**
+         * @ngdoc function
          * @name $scope.loginOauth
-         * @description Oauth authentication
          * @param Oauth provider
+         * @description Oauth authentication
          */
         $scope.loginOauth = function(provider) {
             $window.location.href = '/auth/' + provider;

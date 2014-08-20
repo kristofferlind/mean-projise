@@ -1,8 +1,8 @@
-/*
-    Directive: storyItem
-    Description: Template and logic for story item
-*/
-
+/**
+ * @ngdoc directive
+ * @name  storyItem
+ * @description Logic for viewing story items
+ */
 angular.module('projiSeApp')
 
 .directive('storyItem', function() {
@@ -13,6 +13,7 @@ angular.module('projiSeApp')
             story: '=ngModel'
         }, // {} = isolate, true = child, false/undefined = no change
         controller: function($scope, $rootScope, $attrs, Sprint) {
+            //Checking if story is already in current sprint..
             //Check that drag-type is pb, that sprintId exists on story and compare its sprintId with current sprintId
             if ($attrs.dragType === 'pb' && $scope.story.sprintId && $scope.story.sprintId === Sprint.activeSprintId) {
                 //Set activeSprint to 'story-in-sprint', which is then added as a css class.

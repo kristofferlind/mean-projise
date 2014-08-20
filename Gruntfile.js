@@ -629,9 +629,9 @@ module.exports = function(grunt) {
         'build'
     ]);
 
-    grunt.registerTask('dgeni', 'Generate docs via dgeni.', function() {
+    grunt.registerTask('docs', 'Generate docs via dgeni.', function() {
         var done = this.async();
-        var dgeni = new Dgeni([require('./docs/dgeni-generator')]);
+        var dgeni = new Dgeni([require('./docgen/dgeni-generator')]);
         dgeni.generate().then(done);
     });
 };

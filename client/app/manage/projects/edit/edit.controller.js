@@ -1,3 +1,8 @@
+/**
+ * @ngdoc object
+ * @name ProjectEditController
+ * @description Viewlogic for editing document metadata
+ */
 angular.module('projiSeApp')
     .controller('projectEditController', function($scope, $modalInstance, project) {
         'use strict';

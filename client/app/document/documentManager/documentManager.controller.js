@@ -1,5 +1,5 @@
-//documentManager.controller.js
 /**
+ * @ngdoc object
  * @name DocumentManagerController
  * @description Root state for document management
  */

@@ -1,3 +1,8 @@
+/**
+ * @ngdoc object
+ * @name  ideaCreateController
+ * @description Controller for modal to create an idea
+ */
 angular.module('projiSeApp')
     .controller('ideaCreateController', function($scope, $modalInstance) {
         'use strict';

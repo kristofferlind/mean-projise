@@ -1,3 +1,8 @@
+/**
+ * @ngdoc object
+ * @name  DocumentCreateController
+ * @description  Viewlogic for creating documents
+ */
 angular.module('projiSeApp')
     .controller('documentCreateController', function($scope, $modalInstance) {
         'use strict';
