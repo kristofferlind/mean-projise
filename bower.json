@@ -1,6 +1,7 @@
 {
-  "name": "proji-se",
+  "name": "projise",
   "version": "0.0.0",
+  "license": "MIT",
   "dependencies": {
     "angular": ">=1.2.*",
     "json3": "~3.3.1",

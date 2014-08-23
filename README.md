@@ -1,8 +1,37 @@
+[![Build Status](https://travis-ci.org/kristofferlind/projise.svg)](https://travis-ci.org/kristofferlind/projise)
+[![Code Climate](https://codeclimate.com/github/kristofferlind/projise/badges/gpa.svg)](https://codeclimate.com/github/kristofferlind/projise)
+
 #Projise
-Project management system.
+Projise is a project management system built using MEAN Stack.
 
-##Tech
-MEAN Stack
+#Demo
+(http://projise-klind.rhcloud.com/)
 
-##Purpose
-Learning mean
+#Key features
+* Realtime multiuser task management loosely based on scrum
+* Document management with markdown and result viewed in realtime
+* Managing several teams/projects
+* Add team of users to project
+
+#Planned features
+* Templates for documents
+* Charts
+* Generating reports from project data
+* Adding voice conversations to chat
+* Implementing OT for document management
+* Unifying user task assessments by analyzing previous assessments
+* Overall, more statistics
+
+#Background
+I really disliked having to keep a bunch of spreadsheets and documents in sync for school projects. The goal of this project is to automate as much as possible and also to simplify working as a team. I also partly chose this as a project to learn more about the process.
+
+#Purpose
+First and foremost, this is a learning project. It's my first project using this stack and I've only finished my first year of university so far. Don't expect to see top notch code.
+
+I would however be very happy if it ends up fulfilling it's goal of making project management better. If you find it useful, please tell me. :)
+
+#Contributions
+Feel free to help me learn/build something useful. Code reviews and/or pull requests would be awesome.
+
+#License
+MIT

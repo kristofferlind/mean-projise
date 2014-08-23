@@ -3,7 +3,7 @@
  * @description Manages states and general settings for project views
  */
 angular.module('projiSeApp')
-    .config(function($stateProvider) {
+    .config(['$stateProvider', function($stateProvider) {
     'use strict';
 
     $stateProvider
@@ -11,12 +11,12 @@ angular.module('projiSeApp')
             url: '',
             abstract: true,
             resolve: {
-                resolvedProjectProvider: function(ProjectProvider) {
+                resolvedProjectProvider: ['ProjectProvider', function(ProjectProvider) {
                     return ProjectProvider.promise;
-                },
-                resolvedSprintProvider: function(SprintProvider) {
+                }],
+                resolvedSprintProvider: ['SprintProvider', function(SprintProvider) {
                     return SprintProvider.promise;
-                }
+                }]
             }
         })
         .state('dashboard.project.overview', {
@@ -59,4 +59,4 @@ angular.module('projiSeApp')
                 }
             }
         });
-});
+}]);

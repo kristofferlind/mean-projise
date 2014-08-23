@@ -13,7 +13,7 @@ angular.module('projiSeApp', [
     'ui.bootstrap',
     'btford.markdown'
 ])
-.config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
         .otherwise('/');
 
@@ -21,9 +21,9 @@ angular.module('projiSeApp', [
         url: '',
         abstract: true,
         resolve: {
-            resolvedSession: function(Session) {
+            resolvedSession: ['Session', function(Session) {
                 return Session.promise;
-            }
+            }]
         },
         views: {
             'header': {
@@ -44,9 +44,9 @@ angular.module('projiSeApp', [
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
-})
+}])
 
-.config(function($tooltipProvider) {
+.config(['$tooltipProvider', function($tooltipProvider) {
     $tooltipProvider.options({
         animation: true,
         popupDelay: 450
@@ -54,9 +54,9 @@ angular.module('projiSeApp', [
     $tooltipProvider.setTriggers({
         'mouseenter': 'mouseleave click'
     });
-})
+}])
 
-.factory('authInterceptor', function($rootScope, $q, $cookieStore, $location) {
+.factory('authInterceptor', ['$rootScope', '$q', '$cookieStore', '$location', function($rootScope, $q, $cookieStore, $location) {
     return {
         // Add authorization token to headers
         request: function(config) {
@@ -79,9 +79,9 @@ angular.module('projiSeApp', [
             }
         }
     };
-})
+}])
 
-.run(function($rootScope, $location, Auth) {
+.run(['$rootScope', '$location', 'Auth', function($rootScope, $location, Auth) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function(event, next) {
         Auth.isLoggedInAsync(function(loggedIn) {
@@ -90,4 +90,4 @@ angular.module('projiSeApp', [
             }
         });
     });
-});
+}]);

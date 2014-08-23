@@ -9,7 +9,7 @@ module.exports = {
             undefined,
 
   // Server port
-  port:     process.env.OPENSHIFT_NODEJS_PORT ||
+  port:     process.env.OPENSHIFT_INTERNAL_PORT || process.env.OPENSHIFT_NODEJS_PORT ||
             process.env.PORT ||
             8080,
 

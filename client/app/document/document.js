@@ -6,18 +6,18 @@
  * @description Defines routes and general settings for document states
  */
 angular.module('projiSeApp')
-    .config(function($stateProvider) {
+    .config(['$stateProvider', function($stateProvider) {
         $stateProvider
             .state('dashboard.document', {
                 url: '/documents',
                 authenticate: true,
                 resolve: {
-                    resolvedProjectProvider: function(ProjectProvider) {
+                    resolvedProjectProvider: ['ProjectProvider', function(ProjectProvider) {
                         return ProjectProvider.promise;
-                    },
-                    resolvedSprintProvider: function(SprintProvider) {
+                    }],
+                    resolvedSprintProvider: ['SprintProvider', function(SprintProvider) {
                         return SprintProvider.promise;
-                    }
+                    }]
                 },
                 views: {
                     'main@': {
@@ -54,4 +54,4 @@ angular.module('projiSeApp')
                     }
                 }
             });
-    });
+    }]);

@@ -45,9 +45,13 @@ module.exports = function(socketio) {
     //   handshake: true
     // }));
 
+    //Setting transport to websocket only required for running on openshift
+    // socketio.set('transports', ['websocket']);
+
     socketio.on('connection', function(socket) {
-        socket.address = socket.handshake.address.address + ':' +
-            socket.handshake.address.port;
+        socket.address = socket.handshake.address !== null ?
+            socket.handshake.address.address + ':' + socket.handshake.address.port :
+            process.env.DOMAIN;
         socket.connectedAt = new Date();
 
         // Call onDisconnect.

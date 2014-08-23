@@ -4,7 +4,7 @@
  * @description Handles states and general settings for manager states
  */
 angular.module('projiSeApp')
-    .config(function($stateProvider) {
+    .config(['$stateProvider', function($stateProvider) {
     'use strict';
     $stateProvider
         .state('dashboard.manage', {
@@ -15,9 +15,9 @@ angular.module('projiSeApp')
             url: '/',
             authenticate: true,
             resolve: {
-                resolvedProjectProvider: function(ProjectProvider) {
+                resolvedProjectProvider: ['ProjectProvider', function(ProjectProvider) {
                     return ProjectProvider.promise;
-                }
+                }]
             },
             views: {
                 'main@': {
@@ -30,9 +30,9 @@ angular.module('projiSeApp')
             url: '/teams',
             authenticate: true,
             resolve: {
-                resolvedTeamProvider: function(TeamProvider) {
+                resolvedTeamProvider: ['TeamProvider', function(TeamProvider) {
                     return TeamProvider.promise;
-                }
+                }]
             },
             views: {
                 'main@': {
@@ -41,4 +41,4 @@ angular.module('projiSeApp')
                 }
             }
         });
-});
+}]);
