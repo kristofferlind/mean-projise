@@ -33,6 +33,9 @@
     "expect": true,
     "browser": true,
     "element": true,
-    "by": true
+    "by": true,
+    "spyOn": true,
+    "ddescribe": true,
+    "iit": true
   }
 }

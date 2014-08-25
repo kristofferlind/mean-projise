@@ -1,4 +1,3 @@
-'use strict';
 
 /**
  * @ngdoc object
@@ -12,6 +11,8 @@
  */
 angular.module('projiSeApp')
     .controller('LoginCtrl', function($scope, Auth, $location, $window) {
+        'use strict';
+
         $scope.user = {};
         $scope.errors = {};
 
