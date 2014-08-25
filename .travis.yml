@@ -4,6 +4,7 @@ node_js:
 before_script:
   - 'gem update --system'
   - 'gem install sass'
+  - 'gem install susy'
   - 'npm install -g bower grunt-cli'
   - 'bower install'
 services: mongodb
