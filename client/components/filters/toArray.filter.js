@@ -40,7 +40,7 @@ angular.module('projiSeApp')
                     //Check if its a number
                     if (isNumber(subItem)) {
                         //Parse into an actual number (saved in firebase as string, which makes ordering odd)
-                        subItem = parseInt(subItem);
+                        subItem = parseInt(subItem, 10);
                         item[prop] = subItem;
                     }
                 }

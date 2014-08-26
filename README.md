@@ -30,8 +30,25 @@ First and foremost, this is a learning project. It's my first project using this
 
 I would however be very happy if it ends up fulfilling it's goal of making project management better. If you find it useful, please tell me. :)
 
+#Install
+Download/git clone->npm install
+
+#Run
+npm run/grunt serve
+
+#Build
+grunt build
+
+#Generate docs
+grunt docs
+
+#Test
+npm test
+
 #Contributions
 Feel free to help me learn/build something useful. Code reviews and/or pull requests would be awesome.
 
 #License
 MIT
+
+For dependency licenses, check dependency-licenses.json or their respective license.md files after install
