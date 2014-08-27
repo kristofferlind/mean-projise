@@ -8,3 +8,5 @@ before_script:
   - 'npm install -g bower grunt-cli'
   - 'bower install'
 services: mongodb
+after_script:
+  - cat coverage/lcov.info | codeclimate
