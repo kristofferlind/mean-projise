@@ -54,12 +54,56 @@ describe('Service: DocumentManager', function () {
         expect(DocumentManager.all).toEqual(docs);
     });
 
-    describe('Method: Create', function() {
+    describe('Method: create', function() {
         it('should request user input and save to backend', function() {
             spyOn($modal, 'open').andReturn(fakeModal);
             $httpBackend.expectPOST('/api/documentsMeta', doc).respond(null);
             DocumentManager.create();
             fakeModal.close(doc);
+            $httpBackend.flush();
+        });
+    });
+
+    describe('Method: edit', function() {
+        it('should show document and open editor');
+    });
+
+    describe('Method: show', function() {
+        it('should fetch and show requested document');
+    });
+
+    describe('Method: update', function() {
+        it('should request user input and save to backend', function() {
+            spyOn($modal, 'open').andReturn(fakeModal);
+            $httpBackend.expectPOST('/api/documentsMeta', doc).respond(null);
+            DocumentManager.create();
+            fakeModal.close(doc);
+            $httpBackend.flush();
+        });
+    });
+
+    describe('Method: updateData', function() {
+        it('should update data on backend', function() {
+            var doc = {
+                _id: 'id',
+                data: 'data'
+            };
+
+            $httpBackend.expectPUT('/api/documentsData/id', doc).respond(201);
+            DocumentManager.updateData(doc);
+            $httpBackend.flush();
+        });
+    });
+
+    describe('Method: delete', function() {
+        it('should delete document on backend', function() {
+            var doc = {
+                _id: 'id',
+                data: 'data'
+            };
+
+            $httpBackend.expectPUT('/api/documentsData/id', doc).respond(201);
+            DocumentManager.updateData(doc);
             $httpBackend.flush();
         });
     });

@@ -1,24 +1,24 @@
-describe('Controller: ProjectsController', function () {
+describe('Controller: teamCreateController', function () {
     'use strict';
 
     // load the controller's module
     beforeEach(module('projiSeApp'));
     beforeEach(module('socketMock'));
 
-    var ProjectsController,
+    var teamCreateController,
         scope,
         modalInstance = {};
 
       // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();
-        ProjectsController = $controller('ProjectsController', {
+        teamCreateController = $controller('teamCreateController', {
             $scope: scope,
             $modalInstance: modalInstance
         });
     }));
 
     it('should be defined', function() {
-        expect(ProjectsController).toBeDefined();
+        expect(teamCreateController).toBeDefined();
     });
 });
