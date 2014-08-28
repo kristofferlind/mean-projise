@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/kristofferlind/projise.svg)](https://travis-ci.org/kristofferlind/projise)
 [![Code Climate](https://codeclimate.com/github/kristofferlind/projise/badges/gpa.svg)](https://codeclimate.com/github/kristofferlind/projise)
+[![Test Coverage](https://codeclimate.com/github/kristofferlind/projise/badges/coverage.svg)](https://codeclimate.com/github/kristofferlind/projise)
 
 #Projise
 Projise is a project management system built using MEAN Stack.

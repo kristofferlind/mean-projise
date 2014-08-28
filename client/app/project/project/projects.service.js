@@ -145,7 +145,7 @@ angular.module('projiSeApp').factory('Project', function($http, $modal, $timeout
 
                     //Send to backend on submit
                     addUserModal.result.then(function(user) {
-                        $http.put('/api/projects/' + Project.activeProjectId() + '/users/', user);
+                        $http.put('/api/projects/' + Project.activeProjectId() + '/users', user);
                     });
                 },
                 /**
