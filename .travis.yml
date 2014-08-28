@@ -10,6 +10,6 @@ before_script:
   - 'npm install -g codeclimate-test-reporter'
 services: mongodb
 after_script:
-  - codeclimate < test/coverage/**/lcov.info
+  - codeclimate < coverage/**/lcov.info
 env:
   - CODECLIMATE_REPO_TOKEN=696ce5520f3d9d8913193a7399e3dd4e67a5f62e5aca3c6e910233e8a45c62b5
