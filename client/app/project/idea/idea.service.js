@@ -7,7 +7,7 @@ angular.module('projiSeApp').factory('Idea', function($http, $modal, socket) {
     'use strict';
 
     //Fetch ideas from server on load
-    $http.get('/api/ideas/').success(function(ideas) {
+    $http.get('/api/ideas').success(function(ideas) {
 
         //Set internal list of ideas to fetched data
         Idea.all = angular.copy(ideas);
