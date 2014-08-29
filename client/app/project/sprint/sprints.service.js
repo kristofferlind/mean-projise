@@ -19,7 +19,6 @@ angular.module('projiSeApp').factory('Sprint', function($http, $modal, SprintPro
              */
             activeSprint: function() {
                 var now = new Date().getTime();
-
                 _sprints.forEach(function(sprint) {
                     var start = new Date(sprint.start),
                         end = new Date(sprint.end),
