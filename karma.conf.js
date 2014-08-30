@@ -40,7 +40,7 @@ module.exports = function(config) {
       '**/*.jade': 'ng-jade2js',
       '**/*.html': 'html2js',
       '**/*.coffee': 'coffee',
-      '**/*.js': ['coverage']
+      '!(node_modules)/!(bower_components)/**/!(*spec).js': ['coverage']
     },
 
     ngHtml2JsPreprocessor: {

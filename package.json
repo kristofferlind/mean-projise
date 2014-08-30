@@ -102,7 +102,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "install": "gem install susy && npm install -g bower grunt-cli && bower install",
+    "install": "gem install sass && gem install susy && npm install -g bower grunt-cli && bower install",
     "start": "node server/app.js",
     "test": "grunt test",
     "run": "grunt serve",

@@ -46,6 +46,9 @@ grunt docs
 #Test
 npm test
 
+#Coverage
+Coverage report is only from clientcode, if you can tell me how to combine results from 
+
 #Contributions
 Feel free to help me learn/build something useful. Code reviews and/or pull requests would be awesome.
 
