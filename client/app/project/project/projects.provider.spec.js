@@ -12,7 +12,7 @@ describe('Service: ProjectProvider', function () {
     beforeEach(inject(function (_ProjectProvider_, _$httpBackend_) {
         ProjectProvider = _ProjectProvider_;
         $httpBackend = _$httpBackend_;
-        $httpBackend.expectGET('/api/projects').respond(projects);
+        $httpBackend.whenGET('/api/projects').respond(projects);
     }));
 
     it('should be defined', function() {
@@ -23,5 +23,6 @@ describe('Service: ProjectProvider', function () {
         ProjectProvider.promise.then(function() {
             expect(ProjectProvider.projects).toEqual(projects);
         });
+        $httpBackend.flush();
     });
 });

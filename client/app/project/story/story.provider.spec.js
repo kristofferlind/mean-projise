@@ -4,24 +4,37 @@ describe('Service: StoryProvider', function () {
     // load the controller's module
     beforeEach(module('projiSeApp'));
     beforeEach(module('socketMock'));
+    beforeEach(module(function($provide) {
+        $provide.value('Sprint', mockSprint);
+    }));
 
     var StoryProvider, $httpBackend,
-        stories = ['story1', 'story2'];
+        story = { id: 'id'},
+        stories = [story, story],
+        mockSprint = {
+            activeSprintId: 'id',
+            activeSprint: function() {
+                return {id:'id'};
+            }
+        }
 
       // Initialize the controller and a mock scope
     beforeEach(inject(function (_StoryProvider_, _$httpBackend_) {
         StoryProvider = _StoryProvider_;
         $httpBackend = _$httpBackend_;
-        $httpBackend.expectGET('/api/stories').respond(stories);
+        $httpBackend.whenGET('/api/stories').respond(stories);
+        $httpBackend.whenGET('/api/stories/id').respond(story);
     }));
 
     it('should be defined', function() {
         expect(StoryProvider).toBeDefined();
     });
 
-    it('should populate backlog', function() {
+    it('should populate backlog', function(done) {
         StoryProvider.promiseBacklog.then(function() {
-            expect(StoryProvider.stories).toEqual(stories);
+            expect(StoryProvider.backlog).toEqual(stories);
+            done();
         });
+        $httpBackend.flush();
     });
 });

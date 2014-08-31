@@ -12,7 +12,7 @@ describe('Service: TeamProvider', function () {
     beforeEach(inject(function (_TeamProvider_, _$httpBackend_) {
         TeamProvider = _TeamProvider_;
         $httpBackend = _$httpBackend_;
-        $httpBackend.expectGET('/api/teams').respond(teams);
+        $httpBackend.whenGET('/api/teams').respond(teams);
     }));
 
     it('should be defined', function() {
@@ -23,5 +23,6 @@ describe('Service: TeamProvider', function () {
         TeamProvider.promise.then(function() {
             expect(TeamProvider.teams).toEqual(teams);
         });
+        $httpBackend.flush();
     });
 });

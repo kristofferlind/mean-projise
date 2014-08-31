@@ -12,7 +12,7 @@ describe('Service: SprintProvider', function () {
     beforeEach(inject(function (_SprintProvider_, _$httpBackend_) {
         SprintProvider = _SprintProvider_;
         $httpBackend = _$httpBackend_;
-        $httpBackend.expectGET('/api/sprints').respond(sprints);
+        $httpBackend.whenGET('/api/sprints').respond(sprints);
     }));
 
     it('should be defined', function() {
@@ -23,5 +23,6 @@ describe('Service: SprintProvider', function () {
         SprintProvider.promise.then(function() {
             expect(SprintProvider.sprints).toEqual(sprints);
         });
+        $httpBackend.flush();
     });
 });
