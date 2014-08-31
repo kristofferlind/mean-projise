@@ -62,12 +62,8 @@ describe('Service: Story', function () {
                 return {
                     _id: 'id',
                     activeStory: story._id
-                }
+                };
             }
-        },
-        user = {
-            _id: 'id',
-            name: 'name'
         };
 
     // Initialize the controller and a mock scope
@@ -158,7 +154,7 @@ describe('Service: Story', function () {
             it('should set user story', function() {
                 Story.User.setStory();
                 expect(Story.User.story).toEqual(story);
-            })
+            });
         });
 
         //Need to change the injected list of stories for backlog to make this test work

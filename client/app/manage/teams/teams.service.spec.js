@@ -47,7 +47,7 @@ describe('Service: Team', function () {
                 return {
                     _id: 'id',
                     activeTeam: team._id
-                }
+                };
             }
         },
         user = {

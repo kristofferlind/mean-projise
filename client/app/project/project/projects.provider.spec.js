@@ -6,7 +6,6 @@ describe('Service: ProjectProvider', function () {
     beforeEach(module('socketMock'));
 
     var ProjectProvider, $httpBackend,
-        project = 'project',
         projects = ['project1', 'project2'];
 
       // Initialize the controller and a mock scope

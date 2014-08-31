@@ -48,7 +48,7 @@ describe('Service: Project', function () {
                 return {
                     _id: 'id',
                     activeProject: project._id
-                }
+                };
             }
         },
         user = {

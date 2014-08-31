@@ -6,7 +6,6 @@ describe('Service: StoryProvider', function () {
     beforeEach(module('socketMock'));
 
     var StoryProvider, $httpBackend,
-        story = 'story',
         stories = ['story1', 'story2'];
 
       // Initialize the controller and a mock scope

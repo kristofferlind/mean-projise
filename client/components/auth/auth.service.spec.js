@@ -29,7 +29,7 @@ describe('Service: Auth', function () {
         },
         data = {
                 token: 'token'
-        };
+            };
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function (_Auth_, _$httpBackend_) {
@@ -48,7 +48,7 @@ describe('Service: Auth', function () {
             var correct;
             Auth.login(user).then(function() {
                 correct = false;
-            }).catch(function(err) {
+            }).catch(function() {
                 correct = true;
             }).finally(function() {
                 expect(correct).toBe(true);
@@ -57,12 +57,12 @@ describe('Service: Auth', function () {
             $httpBackend.flush();
         });
 
-        it('should return data on success', function() {
+        it('should return data on success', function(done) {
             $httpBackend.expectPOST('/auth/local', user).respond(200, data);
             var correct;
             Auth.login(user, cb).then(function() {
                 correct = true;
-            }).catch(function(err) {
+            }).catch(function() {
                 correct = false;
             }).finally(function() {
                 expect(correct).toBe(true);

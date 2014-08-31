@@ -6,7 +6,6 @@ describe('Service: TeamProvider', function () {
     beforeEach(module('socketMock'));
 
     var TeamProvider, $httpBackend,
-        team = 'team',
         teams = ['team1', 'team2'];
 
       // Initialize the controller and a mock scope

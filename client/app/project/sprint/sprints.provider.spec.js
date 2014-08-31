@@ -6,7 +6,6 @@ describe('Service: SprintProvider', function () {
     beforeEach(module('socketMock'));
 
     var SprintProvider, $httpBackend,
-        sprint = 'sprint',
         sprints = ['sprint1', 'sprint2'];
 
       // Initialize the controller and a mock scope

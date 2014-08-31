@@ -59,7 +59,7 @@ describe('Service: Sprint', function () {
                 return {
                     _id: 'id',
                     activeSprint: sprint._id
-                }
+                };
             }
         },
         user = {

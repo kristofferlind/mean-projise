@@ -4,7 +4,7 @@
  * @description Handles authentication
  */
 angular.module('projiSeApp')
-    .factory('Auth', function Auth($location, $rootScope, $http, User, $cookieStore, $q) {
+    .factory('Auth', function($location, $rootScope, $http, User, $cookieStore, $q) {
     'use strict';
 
     var currentUser = {};
