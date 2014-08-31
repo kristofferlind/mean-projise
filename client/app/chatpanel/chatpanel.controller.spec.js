@@ -25,7 +25,7 @@ describe('Controller: ChatpanelController', function () {
     });
 
     it('should send message on enter', function () {
-        spyOn(Chat, 'sendMessage').andCallThrough();
+        spyOn(Chat, 'sendMessage').and.callThrough();
 
         var sendEvent = {
             keyCode: 13,
@@ -42,7 +42,7 @@ describe('Controller: ChatpanelController', function () {
     });
 
     it('should add newline on shift+enter', function() {
-        spyOn(Chat, 'sendMessage').andCallThrough();
+        spyOn(Chat, 'sendMessage').and.callThrough();
 
         var sendEvent = {
             keyCode: 13,
@@ -65,8 +65,8 @@ describe('Controller: ChatpanelController', function () {
             preventDefault: function() {}
         };
 
-        spyOn(sendEvent, 'preventDefault').andCallThrough();
-        spyOn(Chat, 'sendMessage').andCallThrough();
+        spyOn(sendEvent, 'preventDefault').and.callThrough();
+        spyOn(Chat, 'sendMessage').and.callThrough();
 
         scope.newMessage = {
             message: ''

@@ -12,7 +12,7 @@ angular.module('projiSeApp')
         currentUser = User.get();
     }
 
-    return {
+    var Auth = {
 
         /**
          * @ngdoc method
@@ -37,10 +37,10 @@ angular.module('projiSeApp')
                 return cb();
             }).
             error(function(err) {
-                this.logout();
+                Auth.logout();
                 deferred.reject(err);
                 return cb(err);
-            }.bind(this));
+            });
 
             return deferred.promise;
         },
@@ -74,9 +74,9 @@ angular.module('projiSeApp')
                     return cb(user);
                 },
                 function(err) {
-                    this.logout();
+                    Auth.logout();
                     return cb(err);
-                }.bind(this)).$promise;
+                }).$promise;
         },
 
         /**
@@ -161,4 +161,6 @@ angular.module('projiSeApp')
             return $cookieStore.get('token');
         }
     };
+
+    return Auth;
 });

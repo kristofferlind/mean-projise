@@ -102,7 +102,7 @@ describe('Service: Team', function () {
                 users:['id']
             };
 
-            spyOn($modal, 'open').andReturn(fakeModal);
+            spyOn($modal, 'open').and.returnValue(fakeModal);
             $httpBackend.expectPOST('/api/teams', insertTeam).respond(201);
             Team.create();
             fakeModal.close(team);
@@ -126,7 +126,7 @@ describe('Service: Team', function () {
 
     describe('Method: update', function() {
         it('should request user input and save to backend', function() {
-            spyOn($modal, 'open').andReturn(fakeModal);
+            spyOn($modal, 'open').and.returnValue(fakeModal);
             $httpBackend.expectPUT('/api/teams/id', team).respond(null);
             Team.update();
             fakeModal.close(team);

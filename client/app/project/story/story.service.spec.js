@@ -97,7 +97,7 @@ describe('Service: Story', function () {
 
     describe('Method: create', function() {
         it('should request user input and save to backend', function() {
-            spyOn($modal, 'open').andReturn(fakeModal);
+            spyOn($modal, 'open').and.returnValue(fakeModal);
             $httpBackend.expectPOST('/api/stories', story).respond(201);
             Story.create();
             fakeModal.close(story);
@@ -115,7 +115,7 @@ describe('Service: Story', function () {
 
     describe('Method: edit', function() {
         it('should request user input and save to backend', function() {
-            spyOn($modal, 'open').andReturn(fakeModal);
+            spyOn($modal, 'open').and.returnValue(fakeModal);
             $httpBackend.expectPUT('/api/stories/id', story).respond(null);
             Story.edit();
             fakeModal.close(story);
@@ -147,7 +147,7 @@ describe('Service: Story', function () {
         describe('Method: remove', function() {
             it('should remove story from sprint backlog (remove sprintId from story', function() {
                 $httpBackend.expectPUT('/api/stories/id', story).respond(null);
-                Story.SprintBacklog.add(editedStory);
+                Story.SprintBacklog.remove(editedStory);
                 $httpBackend.flush();
             });
         });

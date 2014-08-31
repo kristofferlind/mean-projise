@@ -27,7 +27,7 @@ describe('Controller: LoginCtrl', function () {
     }));
 
     it('should call Auth.login on login', function () {
-        spyOn(Auth, 'login').andCallThrough();
+        spyOn(Auth, 'login').and.callThrough();
 
         var form = {
             $valid: true
@@ -39,6 +39,7 @@ describe('Controller: LoginCtrl', function () {
         };
 
         scope.login(form);
+        scope.$digest();
         expect(Auth.login).toHaveBeenCalledWith(scope.user);
     });
 });

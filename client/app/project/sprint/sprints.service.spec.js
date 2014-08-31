@@ -102,7 +102,7 @@ describe('Service: Sprint', function () {
 
     describe('Method: create', function() {
         it('should request user input and save to backend', function() {
-            spyOn($modal, 'open').andReturn(fakeModal);
+            spyOn($modal, 'open').and.returnValue(fakeModal);
             $httpBackend.expectPOST('/api/sprints', sprint).respond(201);
             Sprint.create();
             fakeModal.close(sprint);
@@ -120,7 +120,7 @@ describe('Service: Sprint', function () {
 
     describe('Method: update', function() {
         it('should request user input and save to backend', function() {
-            spyOn($modal, 'open').andReturn(fakeModal);
+            spyOn($modal, 'open').and.returnValue(fakeModal);
             $httpBackend.expectPUT('/api/sprints/id', sprint).respond(null);
             Sprint.update();
             fakeModal.close(sprint);

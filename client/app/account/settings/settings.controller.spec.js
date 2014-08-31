@@ -27,7 +27,7 @@ describe('Controller: SettingsCtrl', function () {
     }));
 
     it('should call Auth.changePassword on changePassword', function () {
-        spyOn(Auth, 'changePassword').andCallThrough();
+        spyOn(Auth, 'changePassword').and.callThrough();
 
         var form = {
             $valid: true

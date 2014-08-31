@@ -103,7 +103,7 @@ describe('Service: Project', function () {
                 users:['id']
             };
 
-            spyOn($modal, 'open').andReturn(fakeModal);
+            spyOn($modal, 'open').and.returnValue(fakeModal);
             $httpBackend.expectPOST('/api/projects', insertProject).respond(201);
             Project.create();
             fakeModal.close(project);
@@ -127,7 +127,7 @@ describe('Service: Project', function () {
 
     describe('Method: update', function() {
         it('should request user input and save to backend', function() {
-            spyOn($modal, 'open').andReturn(fakeModal);
+            spyOn($modal, 'open').and.returnValue(fakeModal);
             $httpBackend.expectPUT('/api/projects/id', project).respond(null);
             Project.update();
             fakeModal.close(project);
@@ -143,7 +143,7 @@ describe('Service: Project', function () {
                     description:'description',
                 };
 
-                spyOn($modal, 'open').andReturn(fakeModal);
+                spyOn($modal, 'open').and.returnValue(fakeModal);
                 $httpBackend.expectPUT('/api/projects/id/users', insertUser).respond(201);
                 Project.Users.add();
                 fakeModal.close(insertUser);

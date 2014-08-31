@@ -56,7 +56,7 @@ describe('Service: DocumentManager', function () {
 
     describe('Method: create', function() {
         it('should request user input and save to backend', function() {
-            spyOn($modal, 'open').andReturn(fakeModal);
+            spyOn($modal, 'open').and.returnValue(fakeModal);
             $httpBackend.expectPOST('/api/documentsMeta', doc).respond(null);
             DocumentManager.create();
             fakeModal.close(doc);
@@ -74,7 +74,7 @@ describe('Service: DocumentManager', function () {
 
     describe('Method: update', function() {
         it('should request user input and save to backend', function() {
-            spyOn($modal, 'open').andReturn(fakeModal);
+            spyOn($modal, 'open').and.returnValue(fakeModal);
             $httpBackend.expectPOST('/api/documentsMeta', doc).respond(null);
             DocumentManager.create();
             fakeModal.close(doc);

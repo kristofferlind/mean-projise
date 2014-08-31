@@ -60,7 +60,7 @@ describe('Service: Idea', function () {
 
     describe('Method: create', function() {
         it('should request user input and save to backend', function() {
-            spyOn($modal, 'open').andReturn(fakeModal);
+            spyOn($modal, 'open').and.returnValue(fakeModal);
             $httpBackend.expectPOST('/api/ideas', idea).respond(null);
             Idea.create();
             fakeModal.close(idea);

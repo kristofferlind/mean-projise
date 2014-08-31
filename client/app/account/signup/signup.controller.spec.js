@@ -27,7 +27,7 @@ describe('Controller: SignupCtrl', function () {
     }));
 
     it('should call Auth.createUser on register', function () {
-        spyOn(Auth, 'createUser').andCallThrough();
+        spyOn(Auth, 'createUser').and.callThrough();
 
         var form = {
             $valid: true

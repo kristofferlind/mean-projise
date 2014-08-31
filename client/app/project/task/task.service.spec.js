@@ -85,7 +85,7 @@ describe('Service: Task', function () {
 
     describe('Method: edit', function() {
         it('should request user input and save to backend', function() {
-            spyOn($modal, 'open').andReturn(fakeModal);
+            spyOn($modal, 'open').and.returnValue(fakeModal);
             $httpBackend.expectPUT('/api/tasks/id', task).respond(null);
             Task.edit();
             fakeModal.close(task);

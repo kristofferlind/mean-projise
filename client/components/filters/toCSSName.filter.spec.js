@@ -1,4 +1,4 @@
-describe('Filter: lineBreak', function () {
+describe('Filter: toCSSName', function () {
     'use strict';
 
     var $filter;
@@ -15,16 +15,16 @@ describe('Filter: lineBreak', function () {
     it('should do nothing if input is undefined', function() {
         var string, result;
 
-        result = $filter('lineBreak')(string);
+        result = $filter('toCSSName')(string);
 
         expect(result).toEqual(undefined);
     });
 
-    it('should replace linky lineBreak with html lineBreak', function () {
-        var string = 'test&#10;message', result;
+    it('should replace spacebar with dash', function () {
+        var string = 'css class', result;
 
-        result = $filter('lineBreak')(string);
+        result = $filter('toCSSName')(string);
 
-        expect(result).toEqual('test<br />message');
+        expect(result).toEqual('css-class');
     });
 });
