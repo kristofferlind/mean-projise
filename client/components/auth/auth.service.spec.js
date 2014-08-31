@@ -6,7 +6,6 @@ describe('Service: Auth', function () {
     beforeEach(module('socketMock'));
 
     beforeEach(module(function($provide) {
-        // $provide.value('User', User);
         $provide.value('$cookieStore', mockCookieStore);
     }));
 
