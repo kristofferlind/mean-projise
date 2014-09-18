@@ -1,4 +1,5 @@
 #Requirements
+Details for use cases are found in /uc
 
 ##PRO Project
 ###PRO.1 Create project
