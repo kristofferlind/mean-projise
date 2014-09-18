@@ -1,15 +1,15 @@
-#PRO.3 Remove project
+#DOC.4 Remove document
 
 **Scope:** System  
 **Level:** User goal  
 **Primary actor:** User  
-**Preconditions:** Project exists  
-**Postconditions:** Project removed  
+**Preconditions:** Document exists  
+**Postconditions:** Document removed  
 **Main success scenario:**  
-1. User chooses to remove project  
+1. User chooses to remove document  
 2. System asks for verification  
 3. User verifies  
-4. System removes project and presents updated list of projects  
+4. System removes document and presents updated list of documents  
 **Extensions:**  
 3. User denies  
   1. System aborts operation  
