@@ -1,5 +1,4 @@
 #Requirements
-Details for use cases are found in /uc
 
 ##DEV dev environment
 Id | name | details
