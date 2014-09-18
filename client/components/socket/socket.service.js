@@ -10,9 +10,9 @@ angular.module('projiSeApp')
     .factory('socket', function(socketFactory) {
     'use strict';
 
-    // Needs explicit url for openshift, url for openshift, otherwise null..
+    // Websockets on openshift
+    // var ioSocket = io('http://projise-klind.rhcloud.com:8000/', {
     // socket.io now auto-configures its connection when we ommit a connection url
-    // var ioSocket = io('http://projise-klind.rhcloud.com/:8000', {
     var ioSocket = io(null, {
         // Send auth token on connection, you will need to DI the Auth service above
         // 'query': 'token=' + Auth.getToken()
