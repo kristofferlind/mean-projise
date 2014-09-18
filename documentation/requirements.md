@@ -11,8 +11,8 @@ DEV.4 | Edit document                   | [link](https://github.com/kristofferli
 DEV.5 | update tasks                    | [link](https://github.com/kristofferlind/projise/tree/master/documentation/uc/dev.5.md)
 
 ##DOC Document
---- | --- | ---
 Id | name | details
+--- | --- | ---
 DOC.1 | Create document                 | [link](https://github.com/kristofferlind/projise/tree/master/documentation/uc/doc.1.md)
 DOC.2 | Edit document details           | [link](https://github.com/kristofferlind/projise/tree/master/documentation/uc/doc.2.md)
 DOC.3 | Edit document                   | [link](https://github.com/kristofferlind/projise/tree/master/documentation/uc/doc.3.md)
@@ -20,8 +20,8 @@ DOC.4 | Remove document                 | [link](https://github.com/kristofferli
 DOC.5 | View document                   | [link](https://github.com/kristofferlind/projise/tree/master/documentation/uc/doc.5.md)
 
 ##IDE Idea
---- | --- | ---
 Id | name | details
+--- | --- | ---
 IDE.1 | Create idea                     | [link](https://github.com/kristofferlind/projise/tree/master/documentation/uc/ide.1.md)
 IDE.2 | Vote idea up                    | [link](https://github.com/kristofferlind/projise/tree/master/documentation/uc/ide.2.md)
 IDE.3 | Vote idea down                  | [link](https://github.com/kristofferlind/projise/tree/master/documentation/uc/ide.3.md)
